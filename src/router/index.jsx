@@ -1,15 +1,22 @@
 import { createBrowserRouter } from "react-router-dom";
 
+import Login from "../pages/Login";
+import Register from "../pages/Register";
 import Home from "../pages/Home";
-import Search from "../pages/Search";
-import HotelDetail from "../pages/HotelDetail";
+import ResetPassword from "../pages/ResetPassword";
+import ForgotPassword from "../pages/ForgotPassword";
 
 // creation de la liste des route avec createBrowserROuter
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
-  { path: "/search", element: <Search /> },
-  { path: "/hotel/:id", element: <HotelDetail /> },
+  { path: "/login", element: <Login /> },
+  { path: "/register", element: <Register /> },
+  { path: "/forgot-password", element: <ForgotPassword /> },
+  { path: "/reset-password", element: <ResetPassword /> },
+
+
+
 ]);
 
 export default router;

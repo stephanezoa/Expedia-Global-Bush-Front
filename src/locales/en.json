@@ -1,0 +1,8 @@
+{
+  "login": "Login",
+  "nav": {
+    "home": "Home",
+    "destinations": "Destinations",
+    "contact": "Trips"
+  }
+}
