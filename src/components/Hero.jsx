@@ -13,7 +13,7 @@ export default function Hero() {
     const [activeTab, setActiveTab] = useState("vols"); // onglet par défaut
 
     const tabs = [
-        { id: "vols", label: "Vols" },
+        { id: "vols", label: "Vols", img: ""},
         { id: "hotels", label: "Hôtels" },
         { id: "sejours", label: "Séjours" },
         { id: "transferts", label: "Transferts" },
@@ -21,7 +21,7 @@ export default function Hero() {
         { id: "assurances", label: "Assurances" },
     ];
   return (
-    <section id="accueil" className="relative w-full h-auto md:h-[400px] bg-gradient-to-r from-blue-200 via-blue-500 to-blue-200 ">
+    <section id="accueil" className="relative w-full h-auto md:h-[400px]">
         <div className='relative h-[200px] flex md:h-[400px] overflow-hidden'>
 
             <div className="absolute inset-0 z-0">
@@ -42,23 +42,12 @@ export default function Hero() {
         
         <div className='absolute w-[90%] left-0 md:left-8 md:w-[90%] lg:w-[70%] mx-auto right-0 top-30 md:top-40  lg:top-25 rounded-lg shadow-2xl bg-white z-40 p-5'>
         
-            <nav className="text-xs md:text-sm flex justify-center space-x-1 md:space-x-10 text-md">
+            <nav className="text-xs md:text-sm flex justify-center items-center space-x-1 md:space-x-10 text-md">
             {tabs.map((tab) => (
-                <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`
-                    relative transition duration-300 font-medium
-                    ${activeTab === tab.id ? "text-blue-600 font-bold" : "text-gray-700 hover:text-blue-600"}
-                `}
-                >
-                {tab.label}
-                <span
-                    className={`
-                    absolute left-0 -bottom-1 h-[2px] bg-blue-600 transition-all duration-300
-                    ${activeTab === tab.id ? "w-full" : "w-0 group-hover:w-full"}
-                    `}
-                ></span>
+                <button key={tab.id} onClick={() => setActiveTab(tab.id)} className={`relative space-y-2  flex-row  justify-center items-center  transition duration-300 font-medium ${activeTab === tab.id ? "text-blue-600 font-bold" : "text-gray-700 hover:text-blue-600"}`} >
+                  <img src="/src/assets/logo_avion.png" alt="" className='w-10' />
+                  <span>{tab.label}</span>
+                  <span className={` absolute left-0 -bottom-1 h-[2px] bg-blue-600 transition-all duration-300 ${activeTab === tab.id ? "w-full" : "w-0 group-hover:w-full"}`}></span>
                 </button>
             ))}
             </nav>

@@ -4,6 +4,7 @@ import Hero from "../components/Hero";
 import CurrencyModal from "../components/CurrencyModal";
 import SpacePub from "../components/SpacePub";
 import ElementsPopulaire from "../components/ElementsPopulaire";
+import InfoGlogush from "../components/InfoGlobush";
 
 export default function Home() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -21,7 +22,14 @@ export default function Home() {
         openCurrencyModal={() => setModalOpen(true)}
       />
       <Hero />
-      <SpacePub/>
+      <div className="bg-gradient-to-tr from-gray-200 via-white to-blue-200 p-20">
+        <SpacePub/>
+      </div>
+      <ElementsPopulaire 
+                title="Destinations Populaires"
+                seeAllLink="/destinations"
+            />
+          <InfoGlogush/>
       <CurrencyModal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}

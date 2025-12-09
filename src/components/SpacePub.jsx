@@ -49,7 +49,6 @@ export default function SpacePub() {
         }
     ];
 
-    // Carrousel automatique
     useEffect(() => {
         if (isPaused) return;
         
@@ -73,7 +72,7 @@ export default function SpacePub() {
     };
 
     return (
-        <div className="w-full max-w-7xl mx-auto my-8 px-4 sm:px-6">
+        <div className="w-full max-w-7xl mx-auto my-8 px-4 sm:px-6 ">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
                 
                 {/* Première boîte - Parrainage */}
