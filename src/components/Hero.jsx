@@ -3,7 +3,12 @@ import { Link } from 'react-router-dom';
 import UserDropdown from './UserDropdwon';
 import LanguageDropdown from './LanguageDropdown';
 import ShopDropdown from './ShopDropdown';
+import SearchBar  from './SearchBar';
+import FlightSearch from './FlightSearch';
 import { useState } from 'react';
+import HotelsSearch from './HotelsSearch';
+import StaySearch from './StaySearch';
+import CarRentalSearch from './CarRentalSearch';
 export default function Hero() {
     const [activeTab, setActiveTab] = useState("vols"); // onglet par défaut
 
@@ -16,8 +21,8 @@ export default function Hero() {
         { id: "assurances", label: "Assurances" },
     ];
   return (
-    <section id="accueil" className="relative pt-0 pb-20 md:pb-40 lg:pb-60 ">
-        <div className='relative h-[200px] md:h-[400px] flex justify-center overflow-hidden'>
+    <section id="accueil" className="relative w-full h-auto md:h-[400px] bg-gradient-to-r from-blue-200 via-blue-500 to-blue-200 ">
+        <div className='relative h-[200px] flex md:h-[400px] overflow-hidden'>
 
             <div className="absolute inset-0 z-0">
                 <img 
@@ -25,17 +30,17 @@ export default function Hero() {
                 alt="image paysage" 
                 className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-black/40"></div>
+                <div className="absolute inset-0 bg-white/10"></div>
             </div>
             
-            <div className="relative z-10 text-center px-4 mt-10 md:mt-15 lg:mt-20">
-                <h1 className='text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4'>
-                Voyages sans limite
-                </h1>
+            <div className="relative z-10 px-4 ml-100 mt-10 md:mt-15 lg:mt-10 items-center justify-start">
+              <h1 className="text-sm md:text-3xl lg:text-3xl font-bold text-white mb-3">
+                Trouver votre besoin
+              </h1>
             </div>
         </div>
         
-        <div className='absolute w-[90%] left-0 md:left-8 md:w-[90%] lg:w-[60%] mx-auto right-0 top-30 md:top-40 rounded-3xl shadow-xl bg-white z-40 p-5'>
+        <div className='absolute w-[90%] left-0 md:left-8 md:w-[90%] lg:w-[70%] mx-auto right-0 top-30 md:top-40  lg:top-25 rounded-lg shadow-2xl bg-white z-40 p-5'>
         
             <nav className="text-xs md:text-sm flex justify-center space-x-1 md:space-x-10 text-md">
             {tabs.map((tab) => (
@@ -60,14 +65,58 @@ export default function Hero() {
 
             <hr className="h-px bg-gray-300 border-0 mt-6 mb-5" />
             
-
-        <div className="p-4">
-          {activeTab === "vols" && <div>✈️ <b>Recherchez vos vols</b> — Formulaire + filtres…</div>}
-          {activeTab === "hotels" && <div>🏨 <b>Découvrez nos hôtels</b> — Recherche + cartes…</div>}
-          {activeTab === "sejours" && <div>🌴 <b>Nos meilleurs séjours</b> — Packages vacances…</div>}
-          {activeTab === "transferts" && <div>🚗 <b>Réservez un transfert</b> — Aéroport ↔ hôtel…</div>}
-          {activeTab === "voitures" && <div>🚘 <b>Louez une voiture</b> — Agences, prix…</div>}
-          {activeTab === "assurances" && <div>🛡️ <b>Assurances voyage</b> — Protection & garanties…</div>}
+        <div className="">
+          {activeTab === "vols" && <div>
+           <form action="">
+            <div className='flex items-center justify-start gap-3'>
+               <FlightSearch />
+            </div>
+           </form>
+            
+            </div>}
+          {activeTab === "hotels" && 
+            <div>
+              <form action="">
+            <div className='flex items-center justify-start gap-3'>
+               <HotelsSearch />
+            </div>
+           </form>
+            </div>
+          }
+          {activeTab === "sejours" && 
+            <div>
+                <form action="">
+                  <div className='flex items-center justify-start gap-3'>
+                    <StaySearch />
+                  </div>
+                </form>
+            </div>
+          }
+          {activeTab === "transferts" && 
+            <div>
+              <form action="">
+                  <div className='flex items-center justify-start gap-3'>
+                    <StaySearch />
+                  </div>
+                </form>
+            </div>
+          }
+          {activeTab === "voitures" && 
+          <div>
+              <form action="">
+                  <div className='flex items-center justify-start gap-3'>
+                    <CarRentalSearch />
+                  </div>
+                </form>
+            </div>
+          }
+          {activeTab === "assurances" && 
+            <form action="">
+                  <div className='flex items-center justify-start gap-3'>
+                    <StaySearch />
+                  </div>
+                </form>
+          }
         </div>
 
       </div>

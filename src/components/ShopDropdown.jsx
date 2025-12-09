@@ -7,7 +7,6 @@ export default function ShopDropdown() {
 
   return (
     <div className="relative hidden md:block">
-      {/* Icône utilisateur */}
       <button onClick={() => setOpen(!open)} className="px-4 cursor-pointer py-2 hover:text-blue-500 text-gray-600 text-xs flex items-center justify-center gap-3 font-bold transition">
         Trouver un voyage <ChevronDown className="w-5" />
       </button>

@@ -2,6 +2,8 @@ import { useState } from "react";
 import Header from "../components/Header";
 import Hero from "../components/Hero";
 import CurrencyModal from "../components/CurrencyModal";
+import SpacePub from "../components/SpacePub";
+import ElementsPopulaire from "../components/ElementsPopulaire";
 
 export default function Home() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -19,6 +21,7 @@ export default function Home() {
         openCurrencyModal={() => setModalOpen(true)}
       />
       <Hero />
+      <SpacePub/>
       <CurrencyModal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
