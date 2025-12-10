@@ -27,7 +27,7 @@ const InfoGlobush = () => {
   ];
 
   return (
-    <div className="w-full bg-gradient-to-tr from-red-100 via-white to-black/30 py-12 md:py-3">
+    <div className="w-full bg-gradient-to-tr from-red-100 via-white to-blue-100 py-12 md:py-3">
       <div className=" relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
