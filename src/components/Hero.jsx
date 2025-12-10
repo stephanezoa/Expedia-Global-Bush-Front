@@ -45,7 +45,6 @@ export default function Hero() {
             <nav className="text-xs md:text-sm flex justify-center items-center space-x-1 md:space-x-10 text-md">
             {tabs.map((tab) => (
                 <button key={tab.id} onClick={() => setActiveTab(tab.id)} className={`relative space-y-2  flex-row  justify-center items-center  transition duration-300 font-medium ${activeTab === tab.id ? "text-blue-600 font-bold" : "text-gray-700 hover:text-blue-600"}`} >
-                  <img src="/src/assets/logo_avion.png" alt="" className='w-10' />
                   <span>{tab.label}</span>
                   <span className={` absolute left-0 -bottom-1 h-[2px] bg-blue-600 transition-all duration-300 ${activeTab === tab.id ? "w-full" : "w-0 group-hover:w-full"}`}></span>
                 </button>
