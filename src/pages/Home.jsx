@@ -5,6 +5,7 @@ import CurrencyModal from "../components/CurrencyModal";
 import SpacePub from "../components/SpacePub";
 import ElementsPopulaire from "../components/ElementsPopulaire";
 import InfoGlogush from "../components/InfoGlobush";
+import Footer from "../components/Footer";
 
 export default function Home() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -35,7 +36,7 @@ export default function Home() {
         onClose={() => setModalOpen(false)}
         onSelect={handleSelection}
       />
-
+      <Footer />
       {/* Contenu de Home */}
     </>
   );
