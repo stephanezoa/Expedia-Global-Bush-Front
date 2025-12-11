@@ -22,14 +22,14 @@ export default function Home() {
         openCurrencyModal={() => setModalOpen(true)}
       />
       <Hero />
-      <div className="bg-gradient-to-tr from-gray-200 via-white to-blue-200 p-20">
+      <div className="bg-gradient-to-tr from-gray-200 via-white to-blue-200 lg:p-20 ">
         <SpacePub/>
       </div>
       <ElementsPopulaire 
                 title="Destinations Populaires"
                 seeAllLink="/destinations"
             />
-          <InfoGlogush/>
+      <InfoGlogush/> 
       <CurrencyModal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}

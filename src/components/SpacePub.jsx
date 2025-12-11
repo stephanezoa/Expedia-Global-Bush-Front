@@ -72,7 +72,7 @@ export default function SpacePub() {
     };
 
     return (
-        <div className="w-full max-w-7xl mx-auto my-8 px-4 sm:px-6 ">
+        <div className="w-full max-w-7xl mx-auto my-8 px-4 sm:px-6  ">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
                 
                 {/* Première boîte - Parrainage */}
@@ -104,7 +104,6 @@ export default function SpacePub() {
                         </Link>
                     </div>
                     
-                    {/* Illustration flottante */}
                     <div className="absolute -right-6 -bottom-6 md:-right-4 md:-bottom-4 lg:-right-2 lg:-bottom-2 opacity-80 group-hover:opacity-100 transition-opacity duration-300">
                         <div className="relative w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64">
                             <div className="absolute inset-0 bg-gradient-to-br from-blue-200 to-blue-300 rounded-full blur-xl opacity-50"></div>
@@ -117,12 +116,10 @@ export default function SpacePub() {
                     </div>
                 </div>
                 
-                {/* Deuxième boîte - Carrousel de pubs */}
                 <div className="lg:col-span-2 h-[400px] md:h-[450px] lg:h-[400px] overflow-hidden rounded-2xl shadow-xl relative group"
                      onMouseEnter={() => setIsPaused(true)}
                      onMouseLeave={() => setIsPaused(false)}>
                     
-                    {/* Carrousel */}
                     <div className="relative h-full">
                         {ads.map((ad, index) => (
                             <div
@@ -133,7 +130,6 @@ export default function SpacePub() {
                             >
                                 <div className={`absolute inset-0 bg-gradient-to-br ${ad.color} opacity-90`}></div>
                                 
-                                {/* Image de fond */}
                                 <div 
                                     className="absolute inset-0 bg-cover bg-center"
                                     style={{ backgroundImage: `url(${ad.image})` }}
@@ -186,7 +182,6 @@ export default function SpacePub() {
                             </div>
                         ))}
                         
-                        {/* Boutons de navigation */}
                         <button
                             onClick={prevSlide}
                             className="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-all duration-300 opacity-0 group-hover:opacity-100"

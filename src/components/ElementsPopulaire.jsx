@@ -118,35 +118,35 @@ const ElementsPopulaire = ({ title = "Éléments Populaires", seeAllLink = "/tou
             </div>
 
             <div className='space-y-2'>
-                <div className="grid grid-cols-5 gap-2">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-2">
 
                 {popularItems.slice(0, 3).map((item) => (
-                    <div key={item.id} className="col-span-1">
+                    <div key={item.id} className="md:col-span-1">
                         <CardTemplate item={item} />
                     </div>
                 ))}
 
-                {/* 4e carte → 2 colonnes */}
                 {popularItems[3] && (
-                    <div className="col-span-2">
+                    <div className="md:col-span-2">
                         <CardTemplate item={popularItems[3]} />
                     </div>
                 )}
             </div>
-            <div className='grid grid-cols-5 gap-2'>
+
+            <div className='grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-2'>
                 {popularItems.slice(0, 1).map((item) =>(
-                    <div key={item.id} className='col-span-2'>
+                    <div key={item.id} className='md:col-span-2'>
                         <CardTemplate item={popularItems[4]} />
                     </div>
                 ))}
 
                 {popularItems.slice(0, 1).map((item) =>(
-                    <div key={item.id} className='col-span-1'>
+                    <div key={item.id} className='md:col-span-1'>
                         <CardTemplate item={popularItems[5]} />
                     </div>
                 ))}
                  {popularItems.slice(0, 1).map((item) =>(
-                    <div key={item.id} className='col-span-2'>
+                    <div key={item.id} className='md:col-span-2'>
                         <CardTemplate item={popularItems[6]} />
                     </div>
                 ))}

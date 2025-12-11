@@ -54,7 +54,6 @@ const InfoGlobush = () => {
                 </div>
               </div>
               
-              {/* Texte */}
               <div className="w-full md:w-3/5 text-black">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
                   Bienvenue chez <span className="text-blue-500">Global Bush</span>
@@ -69,7 +68,7 @@ const InfoGlobush = () => {
                     Réserver un voyage
                     <ChevronRight className="w-5 h-5" />
                   </button>
-                  <button className="px-6 py-3 bg-transparent border-2 border-white text-white font-bold rounded-lg hover:bg-white/10 transition-colors">
+                  <button className="px-6 py-3 bg-transparent border-2 border-blue-500 text-blue-500 font-bold rounded-lg hover:bg-blue-500 hover:text-white transition-colors">
                     Nos services
                   </button>
                 </div>
@@ -78,7 +77,7 @@ const InfoGlobush = () => {
           </div>
           
           <div className="lg:w-1/3">
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 items-center flex justify-center">
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 items-center flex justify-center">
               <img src="/src/assets/personvoy2-removebg-preview.png" alt="" className='w-50'/>
             </div>
           </div>
