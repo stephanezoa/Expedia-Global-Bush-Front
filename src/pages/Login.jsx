@@ -1,5 +1,12 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+// IMPORTS DES IMAGES (obligatoire avec Vite)
+import loginImg from "../assets/login.jpg";
+import logoApp from "../assets/logoApp.jpg";
+import googleLogo from "../assets/goolge-removebg-preview.png";
+import facebookLogo from "../assets/facebppk-removebg-preview.png";
+import appleLogo from "../assets/logoapple-removebg-preview.png";
+
 
 export default function Login() {
 const navigate = useNavigate();
@@ -64,13 +71,15 @@ const handleSubmit = async (e) => {
 return (
     <div className="h-screen w-screen flex">
         <div className="hidden lg:flex w-1/2 h-full relative"> 
-            <img src="/src/assets/login.jpg" alt="Login" className="w-full h-full object-cover" />
+            <img src={loginImg} className="w-full h-full object-cover" />
+
                 <div className="absolute inset-0 bg-black/60"></div>
                 <div className="absolute inset-0 z-10 flex flex-col justify-between p-12 text-white">
                     <div>
                         <div className=" flex justify-start mb-2">
                             <div className="flex items-start space-x-3">
-                                <img src="/src/assets/logoApp.jpg" alt="Logo App"  className="w-30 md:w-40 lg:w-50"/>
+                                <img src={logoApp} className="w-30 md:w-40 lg:w-50" />
+
                             </div>
                         </div>
                         <h1 className="text-4xl font-bold mt-8"> Voyagez avec <span className="text-yellow-300">Confiance</span> </h1> 
@@ -85,7 +94,8 @@ return (
             <div className=" flex justify-center mb-2">
                 <div className="flex items-center space-x-3">
                 <div>
-                   <img src="/src/assets/logoApp.jpg" alt="Logo App"  className="w-30 md:w-40 lg:w-50"/>
+                   <img src={logoApp} className="w-30 md:w-40 lg:w-50" />
+
                 </div>
                 </div>
             </div>
@@ -110,7 +120,8 @@ return (
 
                             <div className="relative  rounded-lg flex items-center  gap-3 justify-center py-3 cursor-pointer hover:bg-gray-100 transition text-gray-500 bg-gray-100 border border-gray-200 ">
                                 <div className="flex items-center pointer-events-none">
-                                    <img src="/src/assets/goolge-removebg-preview.png" alt="logo goolge" className="w-7 h-7"/>
+                                    <img src={googleLogo} className="w-7 h-7" />
+
                                 </div>
                                 <p className="font-bold">continuer avec google</p>
                             </div>
@@ -122,7 +133,8 @@ return (
 
                         <div className="relative  rounded-lg flex items-center  gap-3 justify-center py-3 cursor-pointer hover:bg-gray-100 transition text-gray-500 bg-gray-100 border border-gray-200 ">
                             <div className="flex items-center pointer-events-none">
-                                <img src="/src/assets/facebppk-removebg-preview.png" alt="logo goolge" className="w-11"/>
+                                <img src={facebookLogo} className="w-11" />
+
                             </div>
                             <p className="font-bold">continuer avec Facebook</p>
                         </div>
@@ -135,7 +147,8 @@ return (
 
                         <div className="relative  rounded-lg flex items-center  gap-3 justify-center py-3 cursor-pointer hover:bg-gray-100 transition text-gray-500 bg-gray-100 border border-gray-200 ">
                             <div className="flex items-center justify-center pointer-events-none">
-                                <img src="/src/assets/logoapple-removebg-preview.png" alt="logo goolge" className="w-6"/>
+                                <img src={appleLogo} className="w-6" />
+
                             </div>
                             <p className="font-bold">continuer avec Apple</p>
                         </div>

@@ -9,6 +9,8 @@ import { useState } from 'react';
 import HotelsSearch from './HotelsSearch';
 import StaySearch from './StaySearch';
 import CarRentalSearch from './CarRentalSearch';
+import pays2 from "../assets/pays2.jpg";
+
 export default function Hero() {
     const [activeTab, setActiveTab] = useState("vols"); // onglet par défaut
 
@@ -26,10 +28,11 @@ export default function Hero() {
 
             <div className="absolute inset-0 z-0">
                 <img 
-                src="/src/assets/pays2.jpg" 
-                alt="image paysage" 
-                className="w-full h-full object-cover"
+                  src={pays2}
+                  alt="image paysage"
+                  className="w-full h-full object-cover"
                 />
+
                 <div className="absolute inset-0 bg-white/10"></div>
             </div>
             

@@ -45,7 +45,6 @@ const ElementsPopulaire = ({ title = "Éléments Populaires", seeAllLink = "/tou
             image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=800",
             type: "sejour"
         },
-
         {
             id: 5,
             title: "Hôtel 5★ Bali",
@@ -68,36 +67,13 @@ const ElementsPopulaire = ({ title = "Éléments Populaires", seeAllLink = "/tou
             price: "€1299",
             image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=800",
             type: "sejour"
-        },
-
-        {
-            id: 8,
-            title: "Hôtel 5★ Bali",
-            price: "€249",
-            image: "https://images.unsplash.com/photo-1501117716987-c8e1ecb2101c?auto=format&fit=crop&w=800",
-            type: "hotel",
-            location: "Bali, Indonésie",
-            rating: 4.9
-        },
-        {
-            id: 9,
-            title: "Location de voiture – SUV",
-            price: "€59/jour",
-            image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800",
-            type: "voiture"
-        },
-        {
-            id: 10,
-            title: "Séjour 7 jours Maldives",
-            price: "€1299",
-            image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=800",
-            type: "sejour"
         }
     ];
 
     return (
         <div className="w-4/5 mx-auto px-4 py-12">
 
+            {/* Header */}
             <div className="flex flex-col md:flex-row md:items-center justify-between mb-8">
                 <div>
                     <h2 className="text-xl font-bold text-gray-800 mb-2">
@@ -117,43 +93,40 @@ const ElementsPopulaire = ({ title = "Éléments Populaires", seeAllLink = "/tou
                 </a>
             </div>
 
-            <div className='space-y-2'>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-2">
-
+            {/* ★ Première ligne */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-2 mb-4">
                 {popularItems.slice(0, 3).map((item) => (
                     <div key={item.id} className="md:col-span-1">
                         <CardTemplate item={item} />
                     </div>
                 ))}
 
-                {popularItems[3] && (
-                    <div className="md:col-span-2">
-                        <CardTemplate item={popularItems[3]} />
-                    </div>
-                )}
+                {/* Élément large */}
+                <div className="md:col-span-2">
+                    <CardTemplate item={popularItems[3]} />
+                </div>
             </div>
 
-            <div className='grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-2'>
-                {popularItems.slice(0, 1).map((item) =>(
-                    <div key={item.id} className='md:col-span-2'>
-                        <CardTemplate item={popularItems[4]} />
-                    </div>
-                ))}
+            {/* ★ Deuxième ligne */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-2">
 
-                {popularItems.slice(0, 1).map((item) =>(
-                    <div key={item.id} className='md:col-span-1'>
-                        <CardTemplate item={popularItems[5]} />
-                    </div>
-                ))}
-                 {popularItems.slice(0, 1).map((item) =>(
-                    <div key={item.id} className='md:col-span-2'>
-                        <CardTemplate item={popularItems[6]} />
-                    </div>
-                ))}
+                {/* Grand card */}
+                <div className="md:col-span-2">
+                    <CardTemplate item={popularItems[4]} />
+                </div>
 
-            </div>
+                {/* Petit card */}
+                <div className="md:col-span-1">
+                    <CardTemplate item={popularItems[5]} />
+                </div>
+
+                {/* Grand card */}
+                <div className="md:col-span-2">
+                    <CardTemplate item={popularItems[6]} />
+                </div>
 
             </div>
+
         </div>
     );
 };

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { TicketPercent, ChevronLeft, ChevronRight, Star, Shield, Globe, Award } from "lucide-react";  
 import { Link } from 'react-router-dom';
+import cashImg from '../assets/cahs-removebg-preview.png';
+
 
 export default function SpacePub() {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -108,7 +110,7 @@ export default function SpacePub() {
                         <div className="relative w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64">
                             <div className="absolute inset-0 bg-gradient-to-br from-blue-200 to-blue-300 rounded-full blur-xl opacity-50"></div>
                             <img 
-                                src="/src/assets/cahs-removebg-preview.png" 
+                                src={cashImg} 
                                 alt="Crédits voyage" 
                                 className="relative w-full h-full object-contain animate-float"
                             />
