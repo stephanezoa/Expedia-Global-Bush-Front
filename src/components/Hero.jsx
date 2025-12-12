@@ -54,61 +54,61 @@ export default function Hero() {
             ))}
             </nav>
 
-            <hr className="h-px bg-gray-300 border-0 mt-6 mb-5" />
-            
-        <div className="">
-          {activeTab === "vols" && <div>
-           <form action="">
-            <div className='flex items-center justify-start gap-3'>
-               <FlightSearch />
-            </div>
-           </form>
-            
-            </div>}
-          {activeTab === "hotels" && 
-            <div>
-              <form action="">
-            <div className='flex items-center justify-start gap-3'>
-               <HotelsSearch />
-            </div>
-           </form>
-            </div>
-          }
-          {activeTab === "sejours" && 
+              <hr className="h-px bg-gray-300 border-0 mt-6 mb-5" />
+              
+          <div className="">
+            {activeTab === "vols" && <div>
+            <form action="">
+              <div className='flex items-center justify-start gap-3'>
+                <FlightSearch />
+              </div>
+            </form>
+              
+              </div>}
+            {activeTab === "hotels" && 
+              <div>
+                <form action="">
+              <div className='flex items-center justify-start gap-3'>
+                <HotelsSearch />
+              </div>
+            </form>
+              </div>
+            }
+            {activeTab === "sejours" && 
+              <div>
+                  <form action="">
+                    <div className='flex items-center justify-start gap-3'>
+                      <StaySearch />
+                    </div>
+                  </form>
+              </div>
+            }
+            {activeTab === "transferts" && 
+              <div>
+                <form action="">
+                    <div className='flex items-center justify-start gap-3'>
+                      <StaySearch />
+                    </div>
+                  </form>
+              </div>
+            }
+            {activeTab === "voitures" && 
             <div>
                 <form action="">
-                  <div className='flex items-center justify-start gap-3'>
-                    <StaySearch />
-                  </div>
-                </form>
-            </div>
-          }
-          {activeTab === "transferts" && 
-            <div>
+                    <div className='flex items-center justify-start gap-3'>
+                      <CarRentalSearch />
+                    </div>
+                  </form>
+              </div>
+            }
+            {activeTab === "assurances" && 
               <form action="">
-                  <div className='flex items-center justify-start gap-3'>
-                    <StaySearch />
-                  </div>
-                </form>
-            </div>
-          }
-          {activeTab === "voitures" && 
-          <div>
-              <form action="">
-                  <div className='flex items-center justify-start gap-3'>
-                    <CarRentalSearch />
-                  </div>
-                </form>
-            </div>
-          }
-          {activeTab === "assurances" && 
-            <form action="">
-                  <div className='flex items-center justify-start gap-3'>
-                    <StaySearch />
-                  </div>
-                </form>
-          }
-        </div>
+                    <div className='flex items-center justify-start gap-3'>
+                      <StaySearch />
+                    </div>
+                  </form>
+            }
+          </div>
 
       </div>
        

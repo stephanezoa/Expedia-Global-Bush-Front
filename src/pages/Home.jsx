@@ -6,6 +6,7 @@ import SpacePub from "../components/SpacePub";
 import ElementsPopulaire from "../components/ElementsPopulaire";
 import InfoGlogush from "../components/InfoGlobush";
 import Footer from "../components/Footer";
+import VolsPopulaire from "../components/vols/VolsPopulaire";
 
 export default function Home() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -30,6 +31,7 @@ export default function Home() {
                 title="Destinations Populaires"
                 seeAllLink="/destinations"
             />
+      <VolsPopulaire />
       <InfoGlogush/> 
       <CurrencyModal
         isOpen={modalOpen}
