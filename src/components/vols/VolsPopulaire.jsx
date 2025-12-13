@@ -182,7 +182,7 @@ export default function VolsPopulaire() {
     {
       ville: "Yaoundé (YAO)",
       destinations: [
-        { nom: "Douala", prix: "45.000 XAF", duree: "45min" },
+        { nom: "Douala", prix: "45.0000 XAF", duree: "45min" },
         { nom: "Garoua", prix: "65.000 XAF", duree: "1h 15min" },
         { nom: "Maroua", prix: "75.000 XAF", duree: "1h 30min" },
         { nom: "Bafoussam", prix: "55.000 XAF", duree: "1h" },
