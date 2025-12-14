@@ -13,7 +13,9 @@ import {
   Briefcase, // Icône pour Séjours
   UserRound
 } from "lucide-react";
-import ShopDropdown from "./ShopDropdown"; // Assurez-vous que ce composant est bien responsive
+import ShopDropdown from "./ShopDropdown"; 
+import logoApp from '../assets/logoApp.jpg';
+
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -99,7 +101,7 @@ export default function Header() {
               
               <Link to="/" className="flex items-center space-x-3">
                 <div className="w-32 sm:w-40 h-auto rounded-xl flex items-center justify-center">
-                  <img src="src/assets/logoApp.jpg" alt="Logo IRIVENT" className="w-full h-auto" />
+                  <img src={logoApp} alt="Logo " className="w-full h-auto" />
                 </div>
               </Link>
 
