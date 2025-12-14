@@ -36,14 +36,14 @@ export default function Hero() {
                 <div className="absolute inset-0 bg-white/10"></div>
             </div>
             
-            <div className="relative z-10 px-4 ml-100 mt-10 md:mt-15 lg:mt-10 items-center justify-start">
+            <div className="relative z-10 px-4 mt-10 md:mt-14 lg:mt-10 items-center justify-start">
               <h1 className="text-sm md:text-3xl lg:text-3xl font-bold text-white mb-3">
                 Trouver votre besoin
               </h1>
             </div>
         </div>
         
-        <div className='absolute w-[90%] left-0 md:left-8 md:w-[90%] lg:w-[70%] mx-auto right-0 top-30 md:top-40  lg:top-25 rounded-lg shadow-2xl bg-white z-40 p-5'>
+        <div className='absolute w-[90%] left-0 md:left-8 md:w-[90%] lg:w-[70%] mx-auto right-0 top-20 md:top-24 lg:top-20 rounded-lg shadow-2xl bg-white z-40 p-5'>
         
             <nav className="text-xs md:text-sm flex justify-center items-center space-x-1 md:space-x-10 text-md">
             {tabs.map((tab) => (
