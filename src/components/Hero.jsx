@@ -1,117 +1,153 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import UserDropdown from './UserDropdwon';
-import LanguageDropdown from './LanguageDropdown';
-import ShopDropdown from './ShopDropdown';
-import SearchBar  from './SearchBar';
+import { Search, X, Plane, Hotel, Briefcase, MapPin, Car, Shield } from 'lucide-react';
 import FlightSearch from './FlightSearch';
-import { useState } from 'react';
 import HotelsSearch from './HotelsSearch';
 import StaySearch from './StaySearch';
 import CarRentalSearch from './CarRentalSearch';
+
 import pays2 from "../assets/pays2.jpg";
 
 export default function Hero() {
-    const [activeTab, setActiveTab] = useState("vols"); // onglet par défaut
+    const [activeTab, setActiveTab] = useState("vols");
+    const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false); // Nouvel état pour le mobile
 
     const tabs = [
-        { id: "vols", label: "Vols", img: ""},
-        { id: "hotels", label: "Hôtels" },
-        { id: "sejours", label: "Séjours" },
-        { id: "transferts", label: "Transferts" },
-        { id: "voitures", label: "Voitures" },
-        { id: "assurances", label: "Assurances" },
+        { id: "vols", label: "Vols", icon: Plane },
+        { id: "hotels", label: "Hôtels", icon: Hotel },
+        { id: "sejours", label: "Séjours", icon: Briefcase },
+        { id: "transferts", label: "Transferts", icon: MapPin },
+        { id: "voitures", label: "Voitures", icon: Car },
+        { id: "assurances", label: "Assurances", icon: Shield },
     ];
-  return (
-    <section id="accueil" className="relative w-full h-auto md:h-[400px]">
-        <div className='relative h-[200px] flex md:h-[400px] overflow-hidden'>
 
-            <div className="absolute inset-0 z-0">
-                <img 
-                  src={pays2}
-                  alt="image paysage"
-                  className="w-full h-full object-cover"
-                />
+    const renderSearchComponent = () => {
+        switch (activeTab) {
+            case "vols":
+                return <FlightSearch />;
+            case "hotels":
+                return <HotelsSearch />;
+            case "sejours":
+            case "transferts":
+            case "assurances":
+                return <StaySearch />; // Utilisez un composant générique pour les autres si besoin
+            case "voitures":
+                return <CarRentalSearch />;
+            default:
+                return null;
+        }
+    };
 
-                <div className="absolute inset-0 bg-white/10"></div>
-            </div>
-            
-            <div className="relative z-10 px-4 mt-10 md:mt-14 lg:mt-10 items-center justify-start">
-              <h1 className="text-sm md:text-3xl lg:text-3xl font-bold text-white mb-3">
-                Trouver votre besoin
-              </h1>
+    // Ferme le formulaire complet, utilisé sur mobile
+    const closeMobileSearch = () => {
+        setIsMobileSearchOpen(false);
+    }
+
+    const SearchFormContainer = ({ children }) => (
+        <div className={`absolute w-[95%] sm:w-[90%] lg:w-[70%] mx-auto right-0 left-0 
+                         top-24 md:top-32 lg:top-20 rounded-md shadow-2xl bg-white z-40 p-3 sm:p-5 
+                         transform transition-all duration-300 ${isMobileSearchOpen ? 'translate-y-0' : 'md:translate-y-0'}`}>
+            {children}
+        </div>
+    );
+
+   
+    const MobileSimpleSearch = () => (
+        <div 
+            className="md:hidden absolute w-[95%] mx-auto right-0 left-0 top-60 rounded-xl shadow-2xl bg-white z-40 p-4 transition duration-300"
+            onClick={() => setIsMobileSearchOpen(true)} // Ouvre le formulaire complet au clic
+        >
+            <div className="flex items-center space-x-3 text-gray-500">
+                <Search className="w-5 h-5 flex-shrink-0" />
+                <span className="font-medium">Où souhaitez-vous voyager ?</span>
             </div>
         </div>
-        
-        <div className='absolute w-[90%] left-0 md:left-8 md:w-[90%] lg:w-[70%] mx-auto right-0 top-20 md:top-24 lg:top-20 rounded-lg shadow-2xl bg-white z-40 p-5'>
-        
-            <nav className="text-xs md:text-sm flex justify-center items-center space-x-1 md:space-x-10 text-md">
-            {tabs.map((tab) => (
-                <button key={tab.id} onClick={() => setActiveTab(tab.id)} className={`relative space-y-2  flex-row  justify-center items-center  transition duration-300 font-medium ${activeTab === tab.id ? "text-blue-600 font-bold" : "text-gray-700 hover:text-blue-600"}`} >
-                  <span>{tab.label}</span>
-                  <span className={` absolute left-0 -bottom-1 h-[2px] bg-blue-600 transition-all duration-300 ${activeTab === tab.id ? "w-full" : "w-0 group-hover:w-full"}`}></span>
-                </button>
-            ))}
+    );
+
+    
+    const FullSearchForm = () => (
+        <div className=''>
+            {/* Bouton de fermeture sur Mobile */}
+            <button 
+                onClick={closeMobileSearch}
+                className="absolute top-3 right-3 md:hidden p-2 rounded-full hover:bg-gray-100 text-gray-600"
+                aria-label="Fermer la recherche"
+            >
+                <X className="w-6 h-6" />
+            </button>
+
+            {/* Onglets de Navigation */}
+            <nav className="flex justify-center items-center space-x-2 sm:space-x-4 md:space-x-8 lg:space-x-10">
+                {tabs.map((tab) => (
+                    <button 
+                        key={tab.id} 
+                        onClick={() => setActiveTab(tab.id)} 
+                        className={`group relative flex flex-col sm:flex-row items-center space-x-1 py-1 transition duration-300 font-medium 
+                                    ${activeTab === tab.id ? "text-blue-600 font-bold" : "text-gray-700 hover:text-blue-600"}`} 
+                    >
+                        <tab.icon className="w-4 h-4 md:w-5 md:h-5 hidden sm:inline-block" />
+                        <span className="text-xs md:text-sm whitespace-nowrap">{tab.label}</span>
+                        <span className={`absolute left-0 -bottom-2 h-[3px] rounded-full bg-blue-600 transition-all duration-300 ${activeTab === tab.id ? "w-full" : "w-0 group-hover:w-full"}`}></span>
+                    </button>
+                ))}
             </nav>
 
-              <hr className="h-px bg-gray-300 border-0 mt-6 mb-5" />
-              
-          <div className="">
-            {activeTab === "vols" && <div>
-            <form action="">
-              <div className='flex items-center justify-start gap-3'>
-                <FlightSearch />
-              </div>
-            </form>
-              
-              </div>}
-            {activeTab === "hotels" && 
-              <div>
-                <form action="">
-              <div className='flex items-center justify-start gap-3'>
-                <HotelsSearch />
-              </div>
-            </form>
-              </div>
-            }
-            {activeTab === "sejours" && 
-              <div>
-                  <form action="">
+            <hr className="h-px bg-gray-200 border-0 mt-6 mb-5" />
+            
+            {/* Composant de Recherche Dynamique */}
+            <div className="p-1">
+                <form onSubmit={(e) => e.preventDefault()}>
                     <div className='flex items-center justify-start gap-3'>
-                      <StaySearch />
+                        {renderSearchComponent()}
                     </div>
-                  </form>
-              </div>
-            }
-            {activeTab === "transferts" && 
-              <div>
-                <form action="">
-                    <div className='flex items-center justify-start gap-3'>
-                      <StaySearch />
-                    </div>
-                  </form>
-              </div>
-            }
-            {activeTab === "voitures" && 
-            <div>
-                <form action="">
-                    <div className='flex items-center justify-start gap-3'>
-                      <CarRentalSearch />
-                    </div>
-                  </form>
-              </div>
-            }
-            {activeTab === "assurances" && 
-              <form action="">
-                    <div className='flex items-center justify-start gap-3'>
-                      <StaySearch />
-                    </div>
-                  </form>
-            }
-          </div>
+                </form>
+            </div>
+        </div>
+    );
 
-      </div>
-       
-    </section>
-  );
+   
+    return (
+        <section id="accueil" className="relative w-full h-[450px] sm:h-[400px] md:h-[500px] lg:h-[450px]">
+            {/* Conteneur de l'Image de Fond */}
+            <div className='relative h-full overflow-hidden'>
+                <div className="absolute inset-0 z-0">
+                    <img 
+                      src={pays2}
+                      alt="Paysage de voyage inspirant"
+                      className="w-full h-full object-cover"
+                    />
+                    {/* Overlay pour le contraste */}
+                    <div className="absolute inset-0 bg-black/40"></div>
+                </div>
+                
+                {/* Texte d'Introduction */}
+                <div className="relative z-10 max-w-7xl mx-auto px-4 pt-16 sm:pt-20 md:pt-24 lg:pt-28">
+                  <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-3 tracking-tight drop-shadow-lg">
+                    Trouvez votre prochaine aventure.
+                  </h1>
+                  <p className="text-lg text-white/90 drop-shadow-md">
+                    Vols, hôtels, séjours... Le monde est à portée de clic.
+                  </p>
+                </div>
+            </div>
+            
+            {/* Barre de Recherche Simple (Visible UNIQUEMENT sur mobile, quand le menu n'est pas ouvert) */}
+            {!isMobileSearchOpen && <div className="md:hidden"> <MobileSimpleSearch /> </div>}
+
+            <div className="hidden md:block">
+                <SearchFormContainer>
+                    <FullSearchForm />
+                </SearchFormContainer>
+            </div>
+
+            {isMobileSearchOpen && (
+                <div className="md:hidden fixed inset-0 bg-black/50 z-40 flex items-start justify-center p-4 pt-16">
+                    <SearchFormContainer>
+                        <FullSearchForm />
+                    </SearchFormContainer>
+                </div>
+            )}
+           
+        </section>
+    );
 }

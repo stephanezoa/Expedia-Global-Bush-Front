@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { UserRound, Baby, Luggage, MapPinHouse, Handbag, MapPinCheck, Calendar, CalendarClock } from "lucide-react";
+import { UserRound, Baby, Luggage, MapPinHouse, ArrowRightLeft, Handbag, MapPinCheck, Calendar, CalendarClock } from "lucide-react";
 
 /**
  * Petit hook pour détecter clic à l'extérieur (fermer dropdowns)
@@ -94,25 +94,28 @@ export default function FlightSearch({ onSearch }) {
 
   return (
     <form onSubmit={handleSearch} className="w-full">
-      <div className="space-y-4">
+      <div className="space-y-1">
         {/* TOP ROW: Options */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+        <div className="relative flex  gap-2">
+          <div className="absolute p-2 bg-white top-25.5 border border-gray-300  left-76 md:top-15 rounded-full md:left-97 lg:left-67 z-50">
+            <ArrowRightLeft className="w-4 h-4 md:w-3 md:h-3"/>
+          </div>
           {/* Trip Type Selector */}
           <div ref={tripRef} className="relative">
             <button
               type="button"
               onClick={() => setOpenTrip(v => !v)}
-              className="w-full text-left px-3 py-2.5 border border-gray-300 rounded-lg flex items-center justify-between hover:bg-gray-50 transition bg-white"
+              className="text-left  px-3 py-2.5 rounded-lg flex items-center justify-start hover:bg-gray-50 transition bg-white"
             >
-              <div className="flex items-center gap-2">
+              <div className="flex items-center mr-4">
                 <span className="text-sm font-medium text-gray-800">{tripLabel(tripType)}</span>
               </div>
-              <svg className={`w-4 h-4 text-gray-500 transform ${openTrip ? "rotate-180" : ""}`} viewBox="0 0 20 20" fill="currentColor">
+              <svg className={`w-5 h-5 text-gray-500 transform ${openTrip ? "rotate-180" : ""}`} viewBox="0 0 20 20" fill="currentColor">
                 <path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/>
               </svg>
             </button>
 
-            {openTrip && (
+            {openTrip && ( 
               <div className="absolute left-0 right-0 mt-1 border border-gray-200 rounded-lg bg-white shadow-lg z-40">
                 {["oneway", "roundtrip", "multi"].map(type => (
                   <button
@@ -133,9 +136,9 @@ export default function FlightSearch({ onSearch }) {
             <button
               type="button"
               onClick={() => setOpenClass(v => !v)}
-              className="w-full text-left px-3 py-2.5 border border-gray-300 rounded-lg flex items-center justify-between hover:bg-gray-50 transition bg-white"
+              className="text-left px-3 py-2.5  rounded-lg flex items-center justify-between hover:bg-gray-50 transition bg-white"
             >
-              <div className="flex items-center gap-2">
+              <div className="flex items-center mr-4">
                 <span className="text-sm font-medium text-gray-800">{classLabel(travelClass)}</span>
               </div>
               <svg className={`w-4 h-4 text-gray-500 transform ${openClass ? "rotate-180" : ""}`} viewBox="0 0 20 20" fill="currentColor">
@@ -164,9 +167,9 @@ export default function FlightSearch({ onSearch }) {
             <button
               type="button"
               onClick={() => setOpenPax(v => !v)}
-              className="w-full text-left px-3 py-2.5 border border-gray-300 rounded-lg flex items-center justify-between hover:bg-gray-50 transition bg-white"
+              className=" text-left px-3 py-2.5 rounded-lg flex items-center justify-between hover:bg-gray-50 transition bg-white"
             >
-              <div className="flex items-center gap-2">
+              <div className="flex items-center mr-4">
                 <UserRound className="w-4 h-4 text-gray-600" />
                 <span className="text-sm font-medium text-gray-800">{paxSummary()}</span>
               </div>
@@ -281,9 +284,9 @@ export default function FlightSearch({ onSearch }) {
             <button
               type="button"
               onClick={() => setOpenBag(v => !v)}
-              className="w-full text-left px-3 py-2.5 border border-gray-300 rounded-lg flex items-center justify-between hover:bg-gray-50 transition bg-white"
+              className=" text-left px-3 py-2.5 rounded-lg flex items-center justify-between hover:bg-gray-50 transition bg-white"
             >
-              <div className="flex items-center gap-2">
+              <div className="flex items-center mr-4">
                 <div className="flex items-center gap-1">
                   <span className="text-sm font-medium">{cabin}</span>
                   <Handbag className="w-4 h-4" />
@@ -368,17 +371,19 @@ export default function FlightSearch({ onSearch }) {
         </div>
 
         {/* MAIN SEARCH FIELDS */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-9 gap-3">
           {/* From */}
-          <div className="relative">
-            <MapPinHouse className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-500" />
-            <div className="pointer-events-none absolute left-10 top-1/2 transform -translate-y-1/2 text-sm text-gray-400" id="from-label">
+          <div className="relative md:col-span-2">
+            {/* <MapPinHouse className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-500" /> */}
+            <div className="pointer-events-none absolute left-3 top-1/2 transform -translate-y-1/2 text-sm text-gray-400" id="from-label">
               <span>De :</span>{" "}
-              <span className="font-medium text-gray-700">Ville, aéroport</span>
+              <span className=" text-white font-bold bg-blue-500 rounded-md p-2">Yaounde</span>
+              <span className=" text-gray-500 font-semibold ml-3">Votre depart</span>
+
             </div>
             <input
               type="text"
-              className="w-full py-3 pl-10 pr-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white"
+              className="w-full py-3 pl-10 pr-3 border border-gray-400 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white"
               onFocus={() => document.getElementById("from-label").style.display = "none"}
               onBlur={(e) => {
                 if (!e.target.value) {
@@ -389,15 +394,16 @@ export default function FlightSearch({ onSearch }) {
           </div>
 
           {/* To */}
-          <div className="relative">
-            <MapPinCheck className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-500" />
-            <div className="pointer-events-none absolute left-10 top-1/2 transform -translate-y-1/2 text-sm text-gray-400" id="to-label">
+          <div className="relative md:col-span-2">
+            {/* <MapPinCheck className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-500" /> */}
+            <div className="pointer-events-none absolute left-4 top-1/2 transform -translate-y-1/2 text-sm text-gray-400" id="to-label">
               <span>À :</span>{" "}
-              <span className="font-medium text-gray-700">Ville, aéroport</span>
+              <span className=" text-white font-bold bg-red-500 rounded-md p-2">Douala</span>
+              <span className=" text-gray-500 font-semibold ml-3">Ajouter destinations</span>
             </div>
             <input
               type="text"
-              className="w-full py-3 pl-10 pr-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white"
+              className="w-full py-3 pl-10 pr-3 border border-gray-400 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white"
               onFocus={() => document.getElementById("to-label").style.display = "none"}
               onBlur={(e) => {
                 if (!e.target.value) {
@@ -408,15 +414,32 @@ export default function FlightSearch({ onSearch }) {
           </div>
 
           {/* Date */}
-          <div className="relative">
+          <div className="relative md:col-span-2">
             <CalendarClock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-500" />
             <div className="pointer-events-none absolute left-10 top-1/2 transform -translate-y-1/2 text-sm text-gray-400" id="date-label">
-              <span>Départ :</span>{" "}
-              <span className="font-medium text-gray-700">Sans préférence</span>
+              <span>Départ </span>{" "}
+              <span className="f text-gray-700 font-semibold">mar. 21 dec. - ven.16 jan</span>
             </div>
             <input
               type="text"
-              className="w-full py-3 pl-10 pr-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white"
+              className="w-full py-3 pl-10 pr-3 border border-gray-400 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white"
+              onFocus={() => document.getElementById("date-label").style.display = "none"}
+              onBlur={(e) => {
+                if (!e.target.value) {
+                  document.getElementById("date-label").style.display = "block";
+                }
+              }}
+            />
+          </div>
+          <div className="relative md:col-span-2">
+            {/* <CalendarClock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-500" /> */}
+            <div className="pointer-events-none absolute left-10 top-1/2 transform -translate-y-1/2 text-sm text-gray-400" id="date-label">
+              <span>Duree </span>{" "}
+              <span className="f text-gray-700 font-semibold">3 - 27 nuits</span>
+            </div>
+            <input
+              type="text"
+              className="w-full py-3 pl-10 pr-3 border border-gray-400 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white"
               onFocus={() => document.getElementById("date-label").style.display = "none"}
               onBlur={(e) => {
                 if (!e.target.value) {
@@ -426,23 +449,21 @@ export default function FlightSearch({ onSearch }) {
             />
           </div>
 
+
           {/* Search Button */}
-          <button
-            type="submit"
-            className="w-full py-3 bg-blue-500 text-white rounded-xl font-semibold hover:bg-blue-600 hover:scale-[0.98] transition-all duration-200"
-          >
-            Explorer
+          <button type="submit" className="md:col-span-4 lg:col-span-1 py-3 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600 hover:scale-[0.98] transition-all duration-200">
+            Rechercher
           </button>
         </div>
 
         {/* HOTEL CHECKBOX */}
-        <div className="flex items-center justify-end gap-2 pt-2">
+        <div className="flex items-center justify-start lg:justify-end gap-2 pt-2">
           <input
             type="checkbox"
             id="demander_recherche_hotel"
-            className="w-4 h-4 text-blue-500 rounded focus:ring-blue-400"
+            className="w-3 h-3 md:w-4 md:h-4 text-blue-500 rounded focus:ring-blue-400"
           />
-          <label htmlFor="demander_recherche_hotel" className="text-sm text-gray-600">
+          <label htmlFor="demander_recherche_hotel" className="text-xs md:text-sm text-gray-600">
             Trouver un Hôtel avec globalbush.com Hôtels
           </label>
         </div>
