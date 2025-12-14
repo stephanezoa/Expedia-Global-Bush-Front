@@ -24,7 +24,7 @@ export default function Home() {
         openCurrencyModal={() => setModalOpen(true)}
       />
       <Hero />
-      <div className="bg-gradient-to-tr from-gray-200 via-white to-blue-200 lg:p-20 ">
+      <div className="bg-gradient-to-tr from-blue -100 via-white to-blue-200 lg:p-5 ">
         <SpacePub/>
       </div>
       <ElementsPopulaire 

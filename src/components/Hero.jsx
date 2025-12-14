@@ -147,6 +147,10 @@ export default function Hero() {
                     </SearchFormContainer>
                 </div>
             )}
+
+            <div className='p-5 bg-red-700 w-full flex items-center justify-center gap-4'>
+              <p className="text-white text-xs"><span className='font-bold text-sm'>Your summer of soccer </span> Save on match travel across flights, stays, and more. <span className='text-underline'>See all deals</span></p>
+            </div>
            
         </section>
     );
