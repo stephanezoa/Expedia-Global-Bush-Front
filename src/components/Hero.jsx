@@ -6,7 +6,7 @@ import HotelsSearch from './HotelsSearch';
 import StaySearch from './StaySearch';
 import CarRentalSearch from './CarRentalSearch';
 
-import pays2 from "../assets/pays2.jpg";
+import imageFond from "../assets/pays2.jpg";
 
 export default function Hero() {
     const [activeTab, setActiveTab] = useState("vols");
@@ -94,7 +94,6 @@ export default function Hero() {
 
             <hr className="h-px bg-gray-200 border-0 mt-6 mb-5" />
             
-            {/* Composant de Recherche Dynamique */}
             <div className="p-1">
                 <form onSubmit={(e) => e.preventDefault()}>
                     <div className='flex items-center justify-start gap-3'>
@@ -108,11 +107,10 @@ export default function Hero() {
    
     return (
         <section id="accueil" className="relative w-full h-[450px] sm:h-[400px] md:h-[500px] lg:h-[450px]">
-            {/* Conteneur de l'Image de Fond */}
             <div className='relative h-full overflow-hidden'>
                 <div className="absolute inset-0 z-0">
                     <img 
-                      src={pays2}
+                      src={imageFond}
                       alt="Paysage de voyage inspirant"
                       className="w-full h-full object-cover"
                     />

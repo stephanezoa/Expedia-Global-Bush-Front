@@ -25,7 +25,7 @@ export default function Header() {
 
   // AJOUT DES ICÔNES POUR LA NAVIGATION MOBILE
   const navigation = [
-    { name: "Vols", href: "/flights", icon: Plane },
+    { name: "Vols", href: "/vols", icon: Plane },
     { name: "Hôtels", href: "/hotels", icon: Hotel },
     { name: "Voitures", href: "/cars", icon: Car },
     { name: "Séjours", href: "/packages", icon: Briefcase },
