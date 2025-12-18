@@ -288,7 +288,7 @@ export default function Header() {
               </div>
             </div>
             <div 
-                className="absolute inset-0 bg-black opacity-30" 
+                // className="absolute inset-0 bg-black opacity-20" 
                 onClick={() => setMobileMenuOpen(false)}
             ></div>
           </div>

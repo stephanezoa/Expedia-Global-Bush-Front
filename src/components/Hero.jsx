@@ -54,7 +54,7 @@ export default function Hero() {
    
     const MobileSimpleSearch = () => (
         <div 
-            className="md:hidden absolute w-[95%] mx-auto right-0 left-0 top-60 rounded-xl shadow-2xl bg-white z-40 p-4 transition duration-300"
+            className="md:hidden absolute w-[95%] mx-auto right-0 left-0 top-60 rounded-xl shadow-2xl bg-white z- p-4 transition duration-300"
             onClick={() => setIsMobileSearchOpen(true)} // Ouvre le formulaire complet au clic
         >
             <div className="flex items-center space-x-3 text-gray-500">
@@ -119,7 +119,7 @@ export default function Hero() {
                 </div>
                 
                 {/* Texte d'Introduction */}
-                <div className="relative z-10 max-w-7xl mx-auto px-4 pt-16 sm:pt-20 md:pt-24 lg:pt-28">
+                <div className="relative z- max-w-7xl mx-auto px-4 pt-16 sm:pt-20 md:pt-24 lg:pt-28">
                   <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-3 tracking-tight drop-shadow-lg">
                     Trouvez votre prochaine aventure.
                   </h1>
@@ -129,7 +129,6 @@ export default function Hero() {
                 </div>
             </div>
             
-            {/* Barre de Recherche Simple (Visible UNIQUEMENT sur mobile, quand le menu n'est pas ouvert) */}
             {!isMobileSearchOpen && <div className="md:hidden"> <MobileSimpleSearch /> </div>}
 
             <div className="hidden md:block">
