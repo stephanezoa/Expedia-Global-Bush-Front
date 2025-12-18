@@ -106,7 +106,7 @@ export default function Hero() {
 
    
     return (
-        <section id="accueil" className="relative w-full h-[450px] sm:h-[400px] md:h-[500px] lg:h-[450px]">
+        <section id="accueil" className="relative w-full h-[400px] sm:h-[400px] md:h-[500px] lg:h-[450px]">
             <div className='relative h-full overflow-hidden'>
                 <div className="absolute inset-0 z-0">
                     <img 
@@ -127,6 +127,11 @@ export default function Hero() {
                     Vols, hôtels, séjours... Le monde est à portée de clic.
                   </p>
                 </div>
+
+            <div className='p-5 bg-red-700 w-full flex items-center justify-center gap-4'>
+              <p className="text-white text-xs"><span className='font-bold text-sm'>Your summer of soccer </span> Save on match travel across flights, stays, and more. <span className='text-underline'>See all deals</span></p>
+            </div>
+           
             </div>
             
             {!isMobileSearchOpen && <div className="md:hidden"> <MobileSimpleSearch /> </div>}
@@ -144,11 +149,9 @@ export default function Hero() {
                     </SearchFormContainer>
                 </div>
             )}
-
             <div className='p-5 bg-red-700 w-full flex items-center justify-center gap-4'>
               <p className="text-white text-xs"><span className='font-bold text-sm'>Your summer of soccer </span> Save on match travel across flights, stays, and more. <span className='text-underline'>See all deals</span></p>
             </div>
-           
         </section>
     );
 }

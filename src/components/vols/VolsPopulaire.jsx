@@ -21,11 +21,11 @@ import {
   Shield,
   Zap
 } from "lucide-react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 import imageVol from '../../assets/pays1.jpg';
 
 export default function VolsPopulaire() {
-  const navigate = useNavigate(); // Hook pour la navigation
+  const navigate = useNavigate(); 
   const [favorites, setFavorites] = useState(new Set());
   const [sortBy, setSortBy] = useState("popular");
 
@@ -231,8 +231,6 @@ export default function VolsPopulaire() {
   return (
     <section className="py-12 md:py-16 lg:py-20 bg-blue-50/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* ... (votre code existant jusqu'à la grille des vols) */}
 
         {/* Grille des vols - MODIFIÉE POUR ÊTRE CLIQUABLE */}
         <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-6">
@@ -379,7 +377,7 @@ export default function VolsPopulaire() {
                       <Zap className="w-5 h-5" />
                     </button>
                     <button 
-                      onClick={(e) => handleBookClick(flight.id, e)}
+                       onClick={() => navigate(`/vols/${car.id}`)}
                       className="px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold rounded-xl hover:from-blue-700 hover:to-blue-800 transition shadow-lg shadow-blue-600/30 hover:shadow-xl flex items-center gap-2"
                     >
                       Réserver

@@ -13,6 +13,11 @@ import HotelsPage from "../pages/HotelsPage";
 import HotelsDetailPage from "../pages/HotelsDetailPage";
 import HotelGalleryPage from "../components/HotelGalleryPage";
 
+import CarsPage from "../pages/CarPage";
+import CarDetailPage from "../pages/CarDetailPage";
+import CarGalleryPage from "../components/CarGalleryPage";
+
+
 
 
 
@@ -24,11 +29,14 @@ const router = createBrowserRouter([
   { path: "/vols", element: <FlightsPage /> },
   { path: "/hotels", element: <HotelsPage /> },
 
-  { path: "/vols-details", element: <FlightsDetailPage /> },
-  { path: "/hotels-details", element: <HotelsDetailPage /> },
+  { path: "/vols/:id", element: <FlightsDetailPage /> },
   { path: "/hotels/:id", element: <HotelsDetailPage /> },
+
   { path: "/hotels/:id/gallery", element: <HotelGalleryPage /> },
 
+  { path: "/cars", element: <CarsPage /> },
+  { path: "/cars/:id", element: <CarDetailPage /> },
+  { path: "/cars/:id/gallery", element: <CarGalleryPage /> },
 
 
   { path: "/register", element: <Register /> },

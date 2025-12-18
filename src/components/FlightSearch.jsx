@@ -421,7 +421,7 @@ export default function FlightSearch({ onSearch }) {
         </div>
 
         {/* HOTEL CHECKBOX - Version responsive */}
-        <div className="flex items-center justify-start pt-3">
+        <div className="flex items-center justify-start pt-3 md:hidden">
           <div className="flex items-center gap-3 p-3 bg-white border border-gray-300 rounded-lg hover:border-blue-500 transition cursor-pointer">
             <input
               type="checkbox"
@@ -452,7 +452,7 @@ export default function FlightSearch({ onSearch }) {
         </div>
 
         {/* INFOS SUPPLÉMENTAIRES */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 pt-4 border-t border-gray-200">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 pt-4 border-t md:hidden border-gray-200">
           <div className="flex items-center gap-2 text-sm text-gray-600">
             <div className="w-2 h-2 bg-green-500 rounded-full"></div>
             <span>Prix garantis sans surprise</span>

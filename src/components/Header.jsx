@@ -100,8 +100,8 @@ export default function Header() {
               </button>
               
               <Link to="/" className="flex items-center space-x-3">
-                <div className="w-32 sm:w-40 h-auto rounded-xl flex items-center justify-center">
-                  <img src={logoApp} alt="Logo " className="w-full h-auto" />
+                <div className="p-1 text-2xl h-auto bg-blue-500 text-white font-bold rounded-xl flex items-center justify-center">
+                 GB
                 </div>
               </Link>
 

@@ -23,8 +23,10 @@ export default function Home() {
         currentCurrency={currentCurrency}
         openCurrencyModal={() => setModalOpen(true)}
       />
-      <Hero />
-      <div className="bg-gradient-to-tr from-blue -100 via-white to-blue-200 lg:p-5 ">
+      <div className="">
+        <Hero />
+      </div>
+      <div className="bg-gradient-to-tr from-blue-100 via-white to-blue-200  py-13 lg:p-20">
         <SpacePub/>
       </div>
       <ElementsPopulaire 

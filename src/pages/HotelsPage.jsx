@@ -3,9 +3,12 @@ import { Search, Calendar, Users, MapPin, Filter, Star, ChevronRight, X, Check, 
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { useNavigate } from 'react-router-dom'; 
+
 
 
 const HotelsPage = () => {
+  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useState({
     destination: 'Tallinn',
     checkIn: 'Dec 28',
@@ -411,7 +414,7 @@ const HotelsPage = () => {
             {/* Hotels List */}
             <div className="space-y-6">
               {hotels.map((hotel) => (
-                <div key={hotel.id} className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+                <div key={hotel.id} onClick={() => navigate(`/hotels/${hotel.id}`)} className="bg-white cursor-pointer rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
                   <div className="flex flex-col md:flex-row">
                     {/* Hotel Image */}
                     <div className="md:w-1/3 relative">
@@ -484,7 +487,7 @@ const HotelsPage = () => {
                           <div className="text-sm text-gray-500 mt-1">per night</div>
                           <div className="text-sm text-gray-600 mt-1">+ $18 taxes & fees</div>
                           <div className="mt-4 space-y-2">
-                            <button className="w-full px-6 py-3 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition">
+                            <button  onClick={() => navigate(`/hotels/${hotel.id}`)} className="w-full px-6 py-3 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition">
                               Reserve now
                             </button>
                             <button className="w-full px-6 py-3 border border-blue-600 text-blue-600 font-bold rounded-lg hover:bg-blue-50 transition">

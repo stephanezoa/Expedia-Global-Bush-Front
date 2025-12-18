@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
-import { Search, Calendar, MapPin, Filter, Car, Star, Shield, GasPump, Users, Settings, Clock, Check, Heart, ChevronDown } from 'lucide-react';
+import { Search, Calendar, MapPin, Filter, Car, Star, Shield, Fuel, Users, Settings, Clock, Check, Heart, ChevronDown, Luggage } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
+import { useNavigate } from 'react-router-dom'; 
 
-const CarsPage = () => {
+
+const CarPage = () => {
+  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useState({
     location: 'Paris',
     pickUpDate: 'Mon, Dec 23',
@@ -491,7 +495,7 @@ const CarsPage = () => {
             {/* Cars List */}
             <div className="space-y-6">
               {cars.map((car) => (
-                <div key={car.id} className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+                <div key={car.id} onClick={() => navigate(`/cars/${car.id}`)} className="bg-white rounded-xl cursor-pointer shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
                   <div className="flex flex-col md:flex-row">
                     {/* Car Image */}
                     <div className="md:w-1/3 relative">
@@ -544,7 +548,7 @@ const CarsPage = () => {
                               <span>{car.transmission}</span>
                             </div>
                             <div className="flex items-center gap-1 text-sm text-gray-600">
-                              <GasPump className="w-4 h-4" />
+                              <Fuel className="w-4 h-4" />
                               <span>{car.fuel}</span>
                             </div>
                             <div className="flex items-center gap-1 text-sm text-gray-600">
@@ -606,7 +610,7 @@ const CarsPage = () => {
                             <button className="w-full px-6 py-3 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition">
                               Reserve now
                             </button>
-                            <button className="w-full px-6 py-3 border border-blue-600 text-blue-600 font-bold rounded-lg hover:bg-blue-50 transition">
+                            <button onClick={() => navigate(`/cars/${car.id}`)} className="w-full px-6 py-3 border border-blue-600 text-blue-600 font-bold rounded-lg hover:bg-blue-50 transition">
                               View details
                             </button>
                           </div>
@@ -656,8 +660,10 @@ const CarsPage = () => {
           </div>
         </div>
       </div>
+              <Footer />
+      
     </div>
   );
 };
 
-export default CarsPage;
+export default CarPage;
