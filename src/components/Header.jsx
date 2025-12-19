@@ -28,7 +28,9 @@ export default function Header() {
     { name: "Vols", href: "/vols", icon: Plane },
     { name: "Hôtels", href: "/hotels", icon: Hotel },
     { name: "Voitures", href: "/cars", icon: Car },
-    { name: "Séjours", href: "/packages", icon: Briefcase },
+    { name: "Séjours", href: "", icon: Briefcase },
+    { name: "tourisme", href: "/journeys", icon: Briefcase },
+
   ];
 
   const currencies = [

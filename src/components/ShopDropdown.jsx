@@ -28,8 +28,8 @@ export default function ShopDropdown() {
           <Link to="/cars" className="flex items-center justify-start gap-3 px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition font-medium" onClick={() => setOpen(false)}>
             <Car className="w-5"/> Location de voitures
           </Link>
-             <Link to="/assurances" className="flex items-center justify-start gap-3 px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition font-medium" onClick={() => setOpen(false)}>
-            <ScanHeart className="w-5"/> Assurances
+             <Link to="/journeys" className="flex items-center justify-start gap-3 px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition font-medium" onClick={() => setOpen(false)}>
+            <ScanHeart className="w-5"/> Tourisme
           </Link>
           <hr className="h-px bg-gray-300 border-0 mt-6 mb-5" />
 
