@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
+
 
 export default function Register() {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
-        fullname: "",
+        first_name: "",
+        last_name: "",
         email: "",
         password: "",
         confirmPassword: "",
@@ -30,35 +33,99 @@ export default function Register() {
 
     const validateForm = () => {
         const newErrors = {};
-        if (!formData.fullname.trim()) newErrors.fullname = "Le nom complet est requis";
-            if (!formData.email.trim()) newErrors.email = "L'email est requis";
-                else if (!/\S+@\S+.\S+/.test(formData.email)) newErrors.email = "Format d'email invalide";
+        if (!formData.first_name.trim()) newErrors.first_name = "Le prénom est requis";
+        if (!formData.last_name.trim()) newErrors.last_name = "Le nom est requis";
+        if (!formData.email.trim()) newErrors.email = "L'email est requis";
+        else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = "Format d'email invalide";
         if (!formData.password) newErrors.password = "Le mot de passe est requis";
-        else if (formData.password.length < 6) newErrors.password = "Minimum 6 caractères";
+        else if (formData.password.length < 8) newErrors.password = "Minimum 8 caractères";
         if (formData.password !== formData.confirmPassword)
             newErrors.confirmPassword = "Les mots de passe ne correspondent pas";
         return newErrors;
     };
 
+    const { register } = useAuth();
+
     const handleSubmit = async (e) => {
-    e.preventDefault();
-    const formErrors = validateForm();
-    if (Object.keys(formErrors).length > 0) {
+  e.preventDefault();
+
+  const formErrors = validateForm();
+  if (Object.keys(formErrors).length > 0) {
     setErrors(formErrors);
     return;
-    }
-    setIsSubmitting(true);
-    try {
-    console.log("Inscription avec:", formData);
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    navigate("/login");
+  }
+
+  setIsSubmitting(true);
+        try {
+        console.log('Register payload (raw):', {
+            first_name: formData.first_name,
+            last_name: formData.last_name,
+            email: formData.email,
+        });
+
+        if (typeof register !== 'function') {
+            console.error('Auth register is not a function', register);
+            setErrors({ general: 'Erreur interne: la fonction d\'inscription est indisponible' });
+            setIsSubmitting(false);
+            return;
+        }
+
+        const payload = {
+            email: formData.email,
+            password: formData.password,
+            first_name: formData.first_name || null,
+            last_name: formData.last_name || null,
+        };
+
+        console.log('Register payload (mapped):', payload);
+
+        const result = await register(payload);
+
+        console.log('Register result:', result);
+
+        // 👉 redirection vers page vérification email
+        navigate("/verify-email");
+
     } catch (error) {
-    console.error("Erreur:", error);
-    setErrors({ general: "Erreur lors de l'inscription" });
+        console.error('Register error:', error);
+
+        const serverData = error.response?.data;
+
+        // Try to extract validation errors (FastAPI style) or a detail/message string
+        const newErrors = {};
+
+        if (serverData) {
+            // If detail is an array of validation errors
+            if (Array.isArray(serverData.detail)) {
+                serverData.detail.forEach((err) => {
+                    const loc = err.loc || err?.location || [];
+                    const msg = err.msg || err.message || JSON.stringify(err);
+                    // loc may be like ['body','first_name'] or ['first_name']
+                    const field = Array.isArray(loc) ? loc.slice(-1)[0] : null;
+                    if (field && typeof field === 'string') {
+                        newErrors[field] = msg;
+                    } else {
+                        // fallback to general
+                        newErrors.general = newErrors.general ? newErrors.general + '\n' + msg : msg;
+                    }
+                });
+            } else if (typeof serverData.detail === 'string') {
+                newErrors.general = serverData.detail;
+            } else if (serverData.message) {
+                newErrors.general = serverData.message;
+            } else {
+                newErrors.general = JSON.stringify(serverData);
+            }
+        } else {
+            newErrors.general = error.message || 'Erreur réseau';
+        }
+
+        setErrors(newErrors);
     } finally {
-    setIsSubmitting(false);
+        setIsSubmitting(false);
     }
-    };
+};
+
 
     return (
         <div className="h-screen w-screen flex">
@@ -107,10 +174,42 @@ export default function Register() {
             </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-4">
-           
+            <form onSubmit={handleSubmit} className="space-y-4" autoComplete="on">
 
-        
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <input
+                        type="text"
+                        name="first_name"
+                        value={formData.first_name}
+                        onChange={handleChange}
+                        placeholder="Prénom"
+                        disabled={isSubmitting}
+                        autoComplete="given-name"
+                        className={`block w-full px-3 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition ${
+                            errors.first_name ? "border-red-300" : "border-gray-300"
+                        }`}
+                    />
+                    {errors.first_name && <p className="mt-2 text-sm text-red-600">{errors.first_name}</p>}
+                </div>
+
+                <div>
+                    <input
+                        type="text"
+                        name="last_name"
+                        value={formData.last_name}
+                        onChange={handleChange}
+                        placeholder="Nom"
+                        disabled={isSubmitting}
+                        autoComplete="family-name"
+                        className={`block w-full px-3 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition ${
+                            errors.last_name ? "border-red-300" : "border-gray-300"
+                        }`}
+                    />
+                    {errors.last_name && <p className="mt-2 text-sm text-red-600">{errors.last_name}</p>}
+                </div>
+            </div>
+
             <div>
                 <input
                 type="email"
@@ -119,6 +218,7 @@ export default function Register() {
                 onChange={handleChange}
                 placeholder="Email"
                 disabled={isSubmitting}
+                autoComplete="email"
                 className={`block w-full px-3 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition ${
                     errors.email ? "border-red-300" : "border-gray-300"
                 }`}
@@ -134,6 +234,7 @@ export default function Register() {
                 onChange={handleChange}
                 placeholder="Mot de passe"
                 disabled={isSubmitting}
+                autoComplete="new-password"
                 className={`block w-full px-3 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition ${
                     errors.password ? "border-red-300" : "border-gray-300"
                 }`}
@@ -156,6 +257,7 @@ export default function Register() {
                 onChange={handleChange}
                 placeholder="Confirmez le mot de passe"
                 disabled={isSubmitting}
+                autoComplete="new-password"
                 className={`block w-full px-3 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition ${
                     errors.confirmPassword ? "border-red-300" : "border-gray-300"
                 }`}

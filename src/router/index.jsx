@@ -51,7 +51,7 @@ const router = createBrowserRouter([
 
   { path: "/register", element: <Register /> },
   { path: "/reservation", element: <ReservationPage /> },
-
+  
   { path: "/forgot-password", element: <ForgotPassword /> },
   { path: "/reset-password", element: <ResetPassword /> },
 

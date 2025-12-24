@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { 
   Globe, 
   ChevronDown, 
@@ -11,8 +11,9 @@ import {
   Hotel, // Icône pour Hôtels
   Car,   // Icône pour Voitures (utilisé 'Car' au lieu de Briefcase)
   Briefcase, // Icône pour Séjours
-  UserRound
+  User
 } from "lucide-react";
+import { useAuth } from "../contexts/AuthContext";
 import ShopDropdown from "./ShopDropdown"; 
 import logoApp from '../assets/logoApp.jpg';
 
@@ -21,6 +22,8 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [currency, setCurrency] = useState("XAF");
   const [language, setLanguage] = useState("FR");
+  const navigate = useNavigate();
+  const { user, isAuthenticated, logout } = useAuth();
   // const [isLoggedIn, setIsLoggedIn] = useState(false); // Non utilisé, gardé pour référence
 
   // AJOUT DES ICÔNES POUR LA NAVIGATION MOBILE
@@ -215,13 +218,35 @@ export default function Header() {
                 </span>
               </button>
               
-              {/* Icône de Profil Utilisateur */}
-              <button 
-                className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 hover:bg-blue-200 transition relative"
-                aria-label="User Profile"
-              >
-                <UserRound className="w-5 h-5 text-blue-600" />
-              </button>
+              {/* Profil / Auth */}
+              {isAuthenticated ? (
+                <div className="relative group">
+                  <button className="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-gray-100 transition">
+                    <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-semibold">
+                      {user?.fullname ? user.fullname.charAt(0).toUpperCase() : (user?.name ? user.name.charAt(0).toUpperCase() : (user?.email ? user.email.charAt(0).toUpperCase() : "U"))}
+                    </div>
+                    <span className="hidden sm:inline font-medium">{user?.fullname || user?.name || user?.email}</span>
+                    <ChevronDown className="w-4 h-4" />
+                  </button>
+
+                  <div className="absolute right-0 top-full mt-2 w-56 bg-white rounded-xl shadow-2xl border border-gray-200 p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible z-50">
+                    <div className="p-3 border-b border-gray-100">
+                      <div className="font-medium">{user?.fullname || user?.name || user?.email}</div>
+                      <div className="text-sm text-gray-500">{user?.email}</div>
+                    </div>
+                    <div className="py-1">
+                      <Link to="/profile" className="w-full block px-3 py-2 rounded-lg hover:bg-gray-50">Mon profil</Link>
+                      <Link to="/reservations" className="w-full block px-3 py-2 rounded-lg hover:bg-gray-50">Mes réservations</Link>
+                      <button onClick={async () => { await logout(); navigate('/'); }} className="w-full text-left px-3 py-2 rounded-lg hover:bg-gray-50">Déconnexion</button>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="flex items-center space-x-2">
+                  <Link to="/login" className="px-4 py-2 text-blue-600 font-medium hover:text-blue-700 transition">Connexion</Link>
+                  <Link to="/register" className="px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-medium rounded-lg hover:from-blue-700 hover:to-blue-800 transition shadow-lg shadow-blue-600/30">Inscription</Link>
+                </div>
+              )}
             </div>
           </div>
         </div>
