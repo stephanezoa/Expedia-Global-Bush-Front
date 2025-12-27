@@ -36,52 +36,44 @@ export default function Footer() {
         <div className="border-t border-gray-200 pt-8">
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
                         <div>
-                            <h3 className="font-bold text-gray-900 mb-4">About</h3>
+                            <h3 className="font-bold text-gray-900 mb-4">Company</h3>
                             <ul className="space-y-2 text-sm">
-                                <li><a href="#" className="text-gray-600 hover:text-blue-600">About Global Bush Travel</a></li>
-                                <li><a href="#" className="text-gray-600 hover:text-blue-600">How We Work</a></li>
-                                <li><a href="#" className="text-gray-600 hover:text-blue-600">Careers</a></li>
-                               
+                                <li><Link to={"/about"} className="text-gray-600 hover:text-blue-600">About Global Bush Travel</Link></li>
+                                <li><Link to={"/newsrooms"} className="text-gray-600 hover:text-blue-600">Newsroom</Link></li>
+                                <li><Link to={"/feedback"} className="text-gray-600 hover:text-blue-600">Feedback</Link></li>
                             </ul>
                         </div>
                         
                         <div>
-                            <h3 className="font-bold text-gray-900 mb-4">Discover</h3>
+                            <h3 className="font-bold text-gray-900 mb-4">Explore</h3>
                             <ul className="space-y-2 text-sm">
-                                <li><Link to={"/vols"} className="text-gray-600 hover:text-blue-600">Flights</Link></li>
-                                <li><Link to={"/hotels"} className="text-gray-600 hover:text-blue-600">Hotels</Link></li>
-                                <li><Link to={"/packages"} className="text-gray-600 hover:text-blue-600">Holiday Packages</Link></li>
-                                <li><Link to={"/transfers"} className="text-gray-600 hover:text-blue-600">Airport Transfers</Link></li>
-                                <li><Link to={"/visa"} className="text-gray-600 hover:text-blue-600">Visa Services</Link></li>
+                                <li><Link to={"/destination-pays"} className="text-gray-600 hover:text-blue-600">Cameroon travel guide</Link></li>
+                                <li><Link to={"/destination-pays"} className="text-gray-600 hover:text-blue-600">Hotels in Cameroon</Link></li>
+                                <li><Link to={"/destination-pays"} className="text-gray-600 hover:text-blue-600">Vaccation retals in Cameroon</Link></li>
+                                <li><Link to={"/destination-pays"} className="text-gray-600 hover:text-blue-600">Car rentals in Cameroon</Link></li>
                             </ul>
                         </div>
                         
                         <div>
-                            <h3 className="font-bold text-gray-900 mb-4">Terms and settings</h3>
+                            <h3 className="font-bold text-gray-900 mb-4">Policies</h3>
                             <ul className="space-y-2 text-sm">
-                                <li><Link to={"/visa"} className="text-gray-600 hover:text-blue-600">Terms of Service</Link></li>
-                                <li><Link to={"/visa"} className="text-gray-600 hover:text-blue-600">Accessibility Statement</Link></li>
-                                <li><Link to={"/visa"} className="text-gray-600 hover:text-blue-600">Cancellation Policy</Link></li>
-
+                                <li><Link to={"/legal/privacy-policy"} className="text-gray-600 hover:text-blue-600">Privacy</Link></li>
+                                <li><Link to={"/legal/cookies"} className="text-gray-600 hover:text-blue-600">Cookies</Link></li>
+                                <li><Link to={"/legal/terms-conditions"} className="text-gray-600 hover:text-blue-600">Terms of use</Link></li>
+                                <li><Link to={"/legal/terms-conditions"} className="text-gray-600 hover:text-blue-600">Terms and conditions</Link></li>
+                                <li><Link to={"/legal/privacy-choices"} className="text-gray-600 hover:text-blue-600">Your privacy choices</Link></li>
+                                <li><Link to={"/legal/content-guidelines"} className="text-gray-600 hover:text-blue-600">Content guidelines and reporting content</Link></li>
                             </ul>
                         </div>
                         <div>
-                            <h3 className="font-bold text-gray-900 mb-4">Support</h3>
+                            <h3 className="font-bold text-gray-900 mb-4">Help</h3>
                             <ul className="space-y-2 text-sm">
-                                <li><Link to={"/visa"} className="text-gray-600 hover:text-blue-600">Help Center</Link></li>
-                                <li><Link to={"/visa"} className="text-gray-600 hover:text-blue-600">Contact Us</Link></li>
-                                <li><Link to={"/visa"} className="text-gray-600 hover:text-blue-600">Manage your trips</Link></li>
-
-                            </ul>
-                        </div>
-                        
-                        <div>
-                            <h3 className="font-bold text-gray-900 mb-4">Get in Touch</h3>
-                            <ul className="space-y-2 text-sm">
-                                <li><a href="#" className="text-gray-600 hover:text-blue-600">info@globalbushtratour.com</a></li>
-                                <li><a href="#" className="text-gray-600 hover:text-blue-600">(+237) 233 47 70 00 <br /> (+237) 677 24 66 24</a></li>
-                                <li><a href="#" className="text-gray-600 hover:text-blue-600">Douala Cameroun <br /> Caarrefour Eto'o Bonamoussadi</a></li>
-                                <li><a href="#" className="text-gray-600 hover:text-blue-600">24/7 custumer support</a></li>
+                                <li><Link to={"/contact"} className="text-gray-600 hover:text-blue-600">Support</Link></li>
+                                <li><Link to={""} className="text-gray-600 hover:text-blue-600">Cancel your hotel or vacation rental booking</Link></li>
+                                <li><Link to={""} className="text-gray-600 hover:text-blue-600">Cancel your flight</Link></li>
+                                <li><Link to={""} className="text-gray-600 hover:text-blue-600">Refund basics</Link></li>
+                                <li><Link to={""} className="text-gray-600 hover:text-blue-600">International travel documents</Link></li>
+                                <li><Link to={""} className="text-gray-600 hover:text-blue-600">Your right as a flights traveler</Link></li>
                             </ul>
                         </div>
                     </div>
@@ -128,19 +120,19 @@ export default function Footer() {
                     © {new Date().getFullYear()} Global Bush Travel & Tours. All rights reserved.
                   </p>
                   <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-500">
-                    <Link to="/terms" className="hover:text-white transition">
+                    <Link to="/legal/terms-conditions" className="hover:text-white transition">
                       Terms & Conditions
                     </Link>
-                    <Link to="/privacy" className="hover:text-white transition">
+                    <Link to="/legal/privacy-policy" className="hover:text-white transition">
                       Privacy Policy
                     </Link>
-                    <Link to="/cookies" className="hover:text-white transition">
+                    <Link to="/legal/cookies" className="hover:text-white transition">
                       Cookie Policy
                     </Link>
-                    <Link to="/sitemap" className="hover:text-white transition">
+                    <Link to="" className="hover:text-white transition">
                       Sitemap
                     </Link>
-                    <Link to="/faq" className="hover:text-white transition">
+                    <Link to="" className="hover:text-white transition">
                       FAQ
                     </Link>
                   </div>

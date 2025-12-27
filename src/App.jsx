@@ -1,14 +1,17 @@
-// src/App.jsx
-import React from 'react';
-import { RouterProvider } from 'react-router-dom';
-import { AuthProvider } from './contexts/AuthContext';
-import router from './router';
+// src/App.jsx (ou main.jsx)
+import { RouterProvider } from "react-router-dom";
+import { LanguageProvider } from "./context/LanguageContext";
+import { AuthProvider } from "./context/AuthContext";
+import router from "./router";
+import "./App.css";
 
 function App() {
   return (
-    <AuthProvider>
-      <RouterProvider router={router} />
-    </AuthProvider>
+    <LanguageProvider>
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
+    </LanguageProvider>
   );
 }
 

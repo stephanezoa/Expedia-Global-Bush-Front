@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Search, MapPin, Star, Heart, ChevronRight, Filter, Globe, Clock, Users, TrendingUp, Camera, ArrowRight } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
+import Pays1 from '../assets/pays1.jpg';
 import Footer from '../components/Footer';
 
 
@@ -215,11 +216,16 @@ const JourneysPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
-      <Header />
       
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-green-900 via-emerald-800 to-teal-700 text-white">
-        <div className="absolute inset-0 bg-black/20"></div>
+      <div className="relative overflow-hidden bg-gradient-to-r from-green-900 via-emerald-800 to-teal-700 text-white min-h-[400px]" style={{
+                      backgroundImage: `url(${Pays1})`,
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
+                      backgroundBlendMode: 'overlay'
+                  }}>
+        
+        <div className="absolute inset-0 bg-gradient-to-r from-green-900/50 via-emerald-800/50 to-teal-700/50"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-24">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">

@@ -3,6 +3,20 @@ import { Search, Calendar, Users, Plane, ChevronDown, ChevronRight, Shield, Cloc
 import { Link } from 'react-router-dom';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Pays1 from "../assets/pays1.jpg"
+import Pays2 from "../assets/pays2.jpg"
+
+import AmericanLogo from "../assets/airlines-logo/AmericanAirlines.png"
+import UnutedAirlines from "../assets/airlines-logo/UnutedAirlines.png"
+import SouthAirlines from "../assets/airlines-logo/SouthAirlines.png"
+import AlaskaAirlines from "../assets/airlines-logo/AlaskaAirlines.png"
+import Jetblue from "../assets/airlines-logo/Jetblue.png"
+import Delta from "../assets/airlines-logo/Delta.png"
+import CamairCo from "../assets/airlines-logo/CamairCo.png"
+
+
+
+
 
 
 const FlightsPage = () => {
@@ -27,13 +41,13 @@ const FlightsPage = () => {
     ];
 
     const airlines = [
-        { name: "American Airlines", logo: "AA" },
-        { name: "United", logo: "UA" },
-        { name: "Southwest Airlines", logo: "WN" },
-        { name: "Delta", logo: "DL" },
-        { name: "Frontier Airlines", logo: "F9" },
-        { name: "JetBlue Airways", logo: "B6" },
-        { name: "Alaska Airlines", logo: "AS" },
+        { name: "American Airlines", logo: AmericanLogo },
+        { name: "United", logo: UnutedAirlines },
+        { name: "Southwest Airlines", logo: SouthAirlines },
+        { name: "Delta", logo:  Delta },
+        { name: "Camair Co", logo: CamairCo },
+        { name: "JetBlue Airways", logo: Jetblue },
+        { name: "Alaska Airlines", logo: AlaskaAirlines },
     ];
 
     const flightDeals = [
@@ -81,9 +95,18 @@ const FlightsPage = () => {
     return (
 
         <div className="min-h-screen bg-gray-50">
-            <Header />
-            <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-8">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6">
+            <div 
+                className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-8 relative"
+                style={{
+                    backgroundImage: `url(${Pays1})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundBlendMode: 'overlay'
+                }}
+                >
+                <div className="absolute inset-0 bg-blue-500/50"></div>
+                
+                <div className="relative max-w-7xl mx-auto px-4 sm:px-6 z-10">
                     <h1 className="text-3xl font-bold mb-2">Search flights</h1>
                     <p className="text-blue-100 mb-6">Find and book cheap flights worldwide</p>
                     
@@ -199,8 +222,8 @@ const FlightsPage = () => {
                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-4">
                         {airlines.map((airline, index) => (
                             <div key={index} className="bg-white p-4 rounded-lg shadow-sm border border-gray-200 text-center hover:shadow-md transition-shadow">
-                                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-2">
-                                    <span className="font-bold text-blue-600">{airline.logo}</span>
+                                <div className="w-15 h-15 bg-white rounded-full  flex items-center justify-center mx-auto mb-2 overflow-hidden">
+                                   <img src={airline.logo} alt={airline.name} className='object-contain bg-cover '/>
                                 </div>
                                 <p className="text-sm font-medium text-gray-700">{airline.name}</p>
                             </div>
@@ -250,7 +273,7 @@ const FlightsPage = () => {
                                 <div key={index} className="w-56 flex-shrink-0">
                                     <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
                                         <div className="h-40 bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
-                                            <Plane className="w-12 h-12 text-white" />
+                                            <img src={Pays2} alt="" className='object-cover w-full object-cover h-full  '/>
                                         </div>
                                         <div className="p-4">
                                             <h3 className="font-bold text-gray-900">{destination.name} Flights</h3>

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Search, MapPin, Star, Filter } from "lucide-react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Pays1 from "../assets/pays1.jpg";
 
 const DESTINATIONS = [
     {
@@ -79,11 +80,10 @@ export default function Destinations() {
 
     return (
         <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
-            <Header />
             <div className="relative h-96 overflow-hidden">
                 <div className="absolute inset-0">
                     <img 
-                        src="/src/assets/destinations-hero.jpg" 
+                        src={Pays1}
                         alt="Destinations du monde"
                         className="w-full h-full object-cover"
                     />
