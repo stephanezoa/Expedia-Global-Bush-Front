@@ -32,7 +32,9 @@ export default function Header() {
     { name: "Hôtels", href: "/hotels", icon: Hotel },
     { name: "Voitures", href: "/cars", icon: Car },
     { name: "Séjours", href: "", icon: Briefcase },
-    { name: "tourisme", href: "/journeys", icon: Briefcase },
+    { name: "Tourisme", href: "/journeys", icon: Briefcase },
+    { name: "Destination", href: "/destination", icon: Briefcase },
+
 
   ];
 

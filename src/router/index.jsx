@@ -20,6 +20,11 @@ import JourneyGalleryPage from "../pages/JourneyGalleryPage";
 
 import CarDetailPage from "../pages/CarDetailPage";
 import CarGalleryPage from "../components/CarGalleryPage";
+import Destinations from "../pages/Destination";
+import DestinationDetail from "../pages/DestinationDetail";
+import DestinationGallery from "../pages/DestinationGallery";
+import PrivacyPolicy from "../pages/PrivacyPolicy";
+
 
 
 
@@ -43,6 +48,10 @@ const router = createBrowserRouter([
   { path: "/journeys/:id", element: <JourneyDetailPage /> },
   { path: "/journeys/:id/gallery", element: <JourneyGalleryPage /> },
 
+  { path: "/destination", element: <Destinations /> },
+  { path: "/destination/:id", element: <DestinationDetail /> },
+  { path: "/destination/:id/gallery", element: <DestinationGallery /> },
+
 
 
   { path: "/cars/:id", element: <CarDetailPage /> },
@@ -54,6 +63,9 @@ const router = createBrowserRouter([
   
   { path: "/forgot-password", element: <ForgotPassword /> },
   { path: "/reset-password", element: <ResetPassword /> },
+
+  { path: "/privacy-policy", element: <PrivacyPolicy /> },
+
 
 ]);
 
