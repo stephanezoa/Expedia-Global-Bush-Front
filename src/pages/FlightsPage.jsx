@@ -1,31 +1,55 @@
 import React, { useState } from 'react';
-import { Search, Calendar, Users, Plane, ChevronDown, ChevronRight, Shield, Clock, Trophy, MapPin, Download, Star, Filter, Check } from 'lucide-react';
+import { Search, Calendar, Users, Plane, Shield, Clock, Trophy, MapPin, Download, Star, Filter, Check } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import Pays1 from "../assets/pays1.jpg"
-import Pays2 from "../assets/pays2.jpg"
+import FlightSearchForm from "../components/FlightSearchForm";
+import Pays1 from "../assets/pays1.jpg";
+import Pays2 from "../assets/pays2.jpg";
 
-import AmericanLogo from "../assets/airlines-logo/AmericanAirlines.png"
-import UnutedAirlines from "../assets/airlines-logo/UnutedAirlines.png"
-import SouthAirlines from "../assets/airlines-logo/SouthAirlines.png"
-import AlaskaAirlines from "../assets/airlines-logo/AlaskaAirlines.png"
-import Jetblue from "../assets/airlines-logo/Jetblue.png"
-import Delta from "../assets/airlines-logo/Delta.png"
-import CamairCo from "../assets/airlines-logo/CamairCo.png"
-
-
-
-
-
+import AmericanLogo from "../assets/airlines-logo/AmericanAirlines.png";
+import UnutedAirlines from "../assets/airlines-logo/UnutedAirlines.png";
+import SouthAirlines from "../assets/airlines-logo/SouthAirlines.png";
+import AlaskaAirlines from "../assets/airlines-logo/AlaskaAirlines.png";
+import Jetblue from "../assets/airlines-logo/Jetblue.png";
+import Delta from "../assets/airlines-logo/Delta.png";
+import CamairCo from "../assets/airlines-logo/CamairCo.png";
 
 const FlightsPage = () => {
-    const [tripType, setTripType] = useState('roundtrip');
-    const [departure, setDeparture] = useState('Yaoundé (YAO)');
-    const [destination, setDestination] = useState('');
-    const [departDate, setDepartDate] = useState('');
-    const [returnDate, setReturnDate] = useState('');
-    const [travelers, setTravelers] = useState('1 Traveler, Economy');
+    const [isLoading, setIsLoading] = useState(false);
+    const [searchResults, setSearchResults] = useState(null);
+    const [error, setError] = useState(null);
+
+    // ✅ Implémentation complète de handleSearch
+    const handleSearch = async (searchData) => {
+        console.log('Recherche de vols:', searchData.returnDate);
+        setIsLoading(true);
+        setSearchResults(null);
+        setError(null);
+
+        try {
+            const response = await fetch('http://127.0.0.1:8000/api/v1/search', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(searchData),
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json().catch(() => ({}));
+                throw new Error(errorData.message || `Erreur HTTP: ${response.status}`);
+            }
+
+            const data = await response.json();
+            setSearchResults(data); // Stocke toute la réponse pour affichage
+        } catch (err) {
+            console.error('Erreur lors de la recherche:', err);
+            setError(err.message || 'Impossible de charger les résultats. Veuillez réessayer.');
+        } finally {
+            setIsLoading(false);
+        }
+    };
 
     const popularDestinations = [
         { name: "Los Angeles", code: "LAX", price: "€499" },
@@ -44,7 +68,7 @@ const FlightsPage = () => {
         { name: "American Airlines", logo: AmericanLogo },
         { name: "United", logo: UnutedAirlines },
         { name: "Southwest Airlines", logo: SouthAirlines },
-        { name: "Delta", logo:  Delta },
+        { name: "Delta", logo: Delta },
         { name: "Camair Co", logo: CamairCo },
         { name: "JetBlue Airways", logo: Jetblue },
         { name: "Alaska Airlines", logo: AlaskaAirlines },
@@ -92,10 +116,64 @@ const FlightsPage = () => {
         }
     ];
 
-    return (
+    // ✅ Composant pour afficher les résultats
+    const renderResults = () => {
+        if (isLoading) {
+            return (
+                <div className="bg-white rounded-lg p-8 text-center">
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+                    <p className="text-gray-600">Recherche en cours... Veuillez patienter.</p>
+                </div>
+            );
+        }
 
+        if (error) {
+            return (
+                <div className="bg-red-50 border border-red-200 rounded-lg p-6">
+                    <p className="text-red-800">❌ {error}</p>
+                    <button
+                        onClick={() => handleSearch(searchDataFromForm)} // Vous devrez stocker searchData si vous voulez réessayer
+                        className="mt-4 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+                    >
+                        Réessayer
+                    </button>
+                </div>
+            );
+        }
+
+        if (searchResults) {
+            // 💡 ICI : vous pouvez personnaliser l'affichage des résultats
+            // Pour l'exemple, on affiche juste la session ID et le nombre d'itinéraires
+            const airSearchResult = searchResults.AirSearchResponse?.AirSearchResult;
+            const itineraries = airSearchResult?.FareItineraries || [];
+            const count = itineraries.length;
+
+            return (
+                <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-8">
+                    <h2 className="text-xl font-bold text-gray-900 mb-4">
+                        Résultats de la recherche ({count} itinéraires trouvés)
+                    </h2>
+                    <p className="text-gray-600 mb-2">
+                        <strong>Session ID:</strong> {searchResults.AirSearchResponse?.session_id}
+                    </p>
+                    <p className="text-gray-600 mb-4">
+                        <strong>Fournisseur:</strong> {searchResults.AirSearchResponse?.supplier}
+                    </p>
+
+                    {/* TODO: Remplacer par un composant FlightResults */}
+                    <div className="bg-gray-50 p-4 rounded max-h-96 overflow-y-auto">
+                        <pre className="text-xs overflow-x-auto">{JSON.stringify(searchResults, null, 2)}</pre>
+                    </div>
+                </div>
+            );
+        }
+
+        return null;
+    };
+
+    return (
         <div className="min-h-screen bg-gray-50">
-            <div 
+            <div
                 className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-8 relative"
                 style={{
                     backgroundImage: `url(${Pays1})`,
@@ -103,127 +181,35 @@ const FlightsPage = () => {
                     backgroundPosition: 'center',
                     backgroundBlendMode: 'overlay'
                 }}
-                >
+            >
                 <div className="absolute inset-0 bg-blue-500/50"></div>
-                
                 <div className="relative max-w-7xl mx-auto px-4 sm:px-6 z-10">
                     <h1 className="text-3xl font-bold mb-2">Search flights</h1>
                     <p className="text-blue-100 mb-6">Find and book cheap flights worldwide</p>
-                    
-                    {/* Search Form */}
-                    <div className="bg-white rounded-lg p-6 shadow-xl">
-                        {/* Trip Type */}
-                        <div className="flex border-b mb-6">
-                            <button 
-                                className={`px-6 py-3 font-medium ${tripType === 'roundtrip' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-600'}`}
-                                onClick={() => setTripType('roundtrip')}
-                            >
-                                Roundtrip
-                            </button>
-                            <button 
-                                className={`px-6 py-3 font-medium ${tripType === 'oneway' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-600'}`}
-                                onClick={() => setTripType('oneway')}
-                            >
-                                One-way
-                            </button>
-                            <button 
-                                className={`px-6 py-3 font-medium ${tripType === 'multiday' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-600'}`}
-                                onClick={() => setTripType('multiday')}
-                            >
-                                Multi-day
-                            </button>
-                        </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
-                            {/* Departure */}
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">Leaving from</label>
-                                <div className="relative">
-                                    <input
-                                        type="text"
-                                        value={departure}
-                                        onChange={(e) => setDeparture(e.target.value)}
-                                        className="w-full p-3 border border-gray-300 rounded-lg"
-                                        placeholder="City or airport"
-                                    />
-                                    <MapPin className="absolute right-3 top-3 w-5 h-5 text-gray-400" />
-                                </div>
-                            </div>
-
-                            {/* Destination */}
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">Going to</label>
-                                <div className="relative">
-                                    <input
-                                        type="text"
-                                        value={destination}
-                                        onChange={(e) => setDestination(e.target.value)}
-                                        className="w-full p-3 border border-gray-300 rounded-lg"
-                                        placeholder="City or airport"
-                                    />
-                                    <MapPin className="absolute right-3 top-3 w-5 h-5 text-gray-400" />
-                                </div>
-                            </div>
-
-                            {/* Dates */}
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">Dates</label>
-                                <div className="relative">
-                                    <input
-                                        type="text"
-                                        value={departDate || "Dec 19 - Dec 26"}
-                                        onChange={(e) => setDepartDate(e.target.value)}
-                                        className="w-full p-3 border border-gray-300 rounded-lg"
-                                        placeholder="Select dates"
-                                    />
-                                    <Calendar className="absolute right-3 top-3 w-5 h-5 text-gray-400" />
-                                </div>
-                            </div>
-
-                            {/* Travelers */}
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">Travelers</label>
-                                <div className="relative">
-                                    <input
-                                        type="text"
-                                        value={travelers}
-                                        onChange={(e) => setTravelers(e.target.value)}
-                                        className="w-full p-3 border border-gray-300 rounded-lg"
-                                        placeholder="1 Traveler, Economy"
-                                    />
-                                    <Users className="absolute right-3 top-3 w-5 h-5 text-gray-400" />
-                                </div>
-                            </div>
-
-                            {/* Search Button */}
-                            <div className="flex items-end">
-                                <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 flex items-center justify-center">
-                                    <Search className="w-5 h-5 mr-2" />
-                                    Search
-                                </button>
-                            </div>
-                        </div>
-
-                        {/* Add hotel checkbox */}
-                        <div className="mt-6 flex items-center">
-                            <input type="checkbox" id="addHotel" className="w-4 h-4 text-blue-600 rounded" />
-                            <label htmlFor="addHotel" className="ml-2 text-sm text-gray-700">
-                                Add a place to stay
-                            </label>
-                        </div>
-                    </div>
+                    <FlightSearchForm
+                        onSearch={handleSearch}
+                        initialValues={{
+                            departure: null,
+                            destination: null,
+                            tripType: 'roundtrip'
+                        }}
+                    />
                 </div>
             </div>
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
-                {/* Popular Airlines */}
+                {/* 🔥 Affichage des résultats (au-dessus du reste du contenu) */}
+                {renderResults()}
+
+                {/* Reste du contenu (populaire, conseils, etc.) */}
                 <div className="mb-12">
                     <h2 className="text-xl font-bold text-gray-900 mb-6">Popular airlines</h2>
                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-4">
                         {airlines.map((airline, index) => (
                             <div key={index} className="bg-white p-4 rounded-lg shadow-sm border border-gray-200 text-center hover:shadow-md transition-shadow">
-                                <div className="w-15 h-15 bg-white rounded-full  flex items-center justify-center mx-auto mb-2 overflow-hidden">
-                                   <img src={airline.logo} alt={airline.name} className='object-contain bg-cover '/>
+                                <div className="w-15 h-15 bg-white rounded-full flex items-center justify-center mx-auto mb-2 overflow-hidden">
+                                    <img src={airline.logo} alt={airline.name} className='object-contain bg-cover' />
                                 </div>
                                 <p className="text-sm font-medium text-gray-700">{airline.name}</p>
                             </div>
@@ -242,7 +228,7 @@ const FlightsPage = () => {
                             Add Price Drop Protection and we will pay you back if your flight gets cheaper.
                         </p>
                     </div>
-                    
+
                     <div className="bg-blue-50 p-6 rounded-lg border border-blue-100">
                         <div className="flex items-center mb-3">
                             <Trophy className="w-6 h-6 text-blue-600 mr-2" />
@@ -252,7 +238,7 @@ const FlightsPage = () => {
                             As a member, you can earn rewards on top of airline miles.
                         </p>
                     </div>
-                    
+
                     <div className="bg-blue-50 p-6 rounded-lg border border-blue-100">
                         <div className="flex items-center mb-3">
                             <Clock className="w-6 h-6 text-blue-600 mr-2" />
@@ -264,6 +250,8 @@ const FlightsPage = () => {
                     </div>
                 </div>
 
+                {/* ... (le reste du contenu reste inchangé) ... */}
+
                 {/* Popular Flight Destinations */}
                 <div className="mb-12">
                     <h2 className="text-xl font-bold text-gray-900 mb-6">Popular flight destinations</h2>
@@ -273,12 +261,17 @@ const FlightsPage = () => {
                                 <div key={index} className="w-56 flex-shrink-0">
                                     <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
                                         <div className="h-40 bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
-                                            <img src={Pays2} alt="" className='object-cover w-full object-cover h-full  '/>
+                                            <img src={Pays2} alt="" className='object-cover w-full h-full' />
                                         </div>
                                         <div className="p-4">
                                             <h3 className="font-bold text-gray-900">{destination.name} Flights</h3>
                                             <p className="text-sm text-gray-600 mb-2">From {destination.price}</p>
-                                            <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg text-sm font-medium transition">
+                                            <button
+                                                className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg text-sm font-medium transition"
+                                                onClick={() => {
+                                                    // Optionnel : déclencher une recherche prédéfinie
+                                                }}
+                                            >
                                                 Search flights
                                             </button>
                                         </div>
@@ -288,6 +281,8 @@ const FlightsPage = () => {
                         </div>
                     </div>
                 </div>
+
+                {/* ... (flightDeals, bookingTips, App Download) ... */}
 
                 {/* Flight Deals */}
                 <div className="mb-12">
@@ -315,10 +310,10 @@ const FlightsPage = () => {
                 <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-12">
                     <h2 className="text-2xl font-bold text-gray-900 mb-6">Tips on booking cheap flights</h2>
                     <p className="text-gray-600 mb-8">
-                        Looking for the best time to buy airline tickets to get a cheap flight to everywhere? 
+                        Looking for the best time to buy airline tickets to get a cheap flight to everywhere?
                         Here's how to find the best deals for flight booking no matter where you want to go in the world.
                     </p>
-                    
+
                     <div className="space-y-6">
                         {bookingTips.map((tip, index) => (
                             <div key={index} className="border-b border-gray-100 pb-6 last:border-0">
@@ -327,7 +322,7 @@ const FlightsPage = () => {
                             </div>
                         ))}
                     </div>
-                    
+
                     <div className="mt-8 p-4 bg-blue-50 rounded-lg border border-blue-100">
                         <p className="text-sm text-gray-600">
                             *Available for a fee on select flights. Terms apply. Based on historical flight data.
@@ -341,7 +336,7 @@ const FlightsPage = () => {
                         <div className="mb-6 md:mb-0 md:mr-8">
                             <h2 className="text-2xl font-bold mb-2">Go further with the Expedia app</h2>
                             <p className="text-blue-100 mb-4">
-                                Get up to 20% off with Member Prices on hotels. Our app deals help you to save on trips 
+                                Get up to 20% off with Member Prices on hotels. Our app deals help you to save on trips
                                 so you can travel more and manage it all on the go.
                             </p>
                             <div className="flex items-center gap-2 text-sm">

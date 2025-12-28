@@ -2,7 +2,7 @@
 import axios from 'axios';
 import { authService } from './auth';
 
-const API_BASE_URL = 'http://38.242.144.227:5105';
+const API_BASE_URL = 'http://127.0.0.1:8000';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -46,7 +46,7 @@ api.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error.config;
-    
+
     // Si erreur 401 et pas déjà en train de rafraîchir
     if (error.response?.status === 401 && !originalRequest._retry) {
       if (isRefreshing) {
@@ -60,38 +60,38 @@ api.interceptors.response.use(
           return Promise.reject(err);
         });
       }
-      
+
       originalRequest._retry = true;
       isRefreshing = true;
-      
+
       try {
         // Rafraîchir le token
         const { accessToken } = await authService.refreshToken();
-        
+
         // Mettre à jour l'en-tête de la requête originale
         originalRequest.headers.Authorization = `Bearer ${accessToken}`;
-        
+
         // Traiter la file d'attente
         processQueue(null, accessToken);
-        
+
         // Réessayer la requête originale
         return api(originalRequest);
       } catch (refreshError) {
         // Échec du rafraîchissement, déconnecter l'utilisateur
         processQueue(refreshError, null);
         await authService.logout();
-        
+
         // Rediriger vers la page de login
         if (window.location.pathname !== '/login') {
           window.location.href = '/login';
         }
-        
+
         return Promise.reject(refreshError);
       } finally {
         isRefreshing = false;
       }
     }
-    
+
     // Gestion d'autres erreurs
     if (error.response) {
       switch (error.response.status) {
@@ -109,7 +109,7 @@ api.interceptors.response.use(
           break;
       }
     }
-    
+
     return Promise.reject(error);
   }
 );
