@@ -8,6 +8,7 @@ import Home from "../pages/Home";
 import ResetPassword from "../pages/ResetPassword";
 import ForgotPassword from "../pages/ForgotPassword";
 import FlightsPage from "../pages/FlightsPage";
+import FlightResultsPage from "../pages/FlightResultsPage";
 import FlightsDetailPage from "../pages/FlightsDetailPage";
 import ReservationPage from "../pages/ReservationPage";
 import HotelsPage from "../pages/HotelsPage";
@@ -46,6 +47,8 @@ const router = createBrowserRouter([
       { path: "login", element: <Login /> },
       { path: "register", element: <Register /> },
       { path: "vols", element: <FlightsPage /> },
+      { path: "/flights/results", element: <FlightResultsPage /> },
+
       { path: "hotels", element: <HotelsPage /> },
       { path: "vols/:id", element: <FlightsDetailPage /> },
       { path: "hotels/:id", element: <HotelsDetailPage /> },

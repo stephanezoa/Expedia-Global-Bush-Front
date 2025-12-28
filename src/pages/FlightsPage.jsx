@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { Search, Calendar, Users, Plane, Shield, Clock, Trophy, MapPin, Download, Star, Filter, Check } from 'lucide-react';
+import { Search, Calendar, Users, Plane, Shield, Clock, Trophy, MapPin, Download, Star, Filter, Check, Loader2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import FlightSearchForm from "../components/FlightSearchForm";
+import FlightResultCard from "../components/FlightResultCard";
+import FlightDetailsModal from "../components/FlightDetailsModal";
 import Pays1 from "../assets/pays1.jpg";
 import Pays2 from "../assets/pays2.jpg";
 
@@ -19,15 +21,18 @@ const FlightsPage = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [searchResults, setSearchResults] = useState(null);
     const [error, setError] = useState(null);
+    const [selectedFlight, setSelectedFlight] = useState(null);
+    const [showModal, setShowModal] = useState(false);
 
-    // ✅ Implémentation complète de handleSearch
+    // ✅ Affichage des résultats sur la même page
     const handleSearch = async (searchData) => {
-        console.log('Recherche de vols:', searchData.returnDate);
+        console.log('Recherche de vols:', searchData);
         setIsLoading(true);
         setSearchResults(null);
         setError(null);
 
         try {
+            // Appel API de recherche
             const response = await fetch('http://127.0.0.1:8000/api/v1/search', {
                 method: 'POST',
                 headers: {
@@ -42,13 +47,25 @@ const FlightsPage = () => {
             }
 
             const data = await response.json();
-            setSearchResults(data); // Stocke toute la réponse pour affichage
+
+            // Sauvegarder dans le cache
+            const { flightCacheService } = await import('../services/flightCacheService');
+            flightCacheService.saveSearchResults(searchData, data);
+
+            // Afficher les résultats sur la même page
+            setSearchResults(data);
+
         } catch (err) {
             console.error('Erreur lors de la recherche:', err);
             setError(err.message || 'Impossible de charger les résultats. Veuillez réessayer.');
         } finally {
             setIsLoading(false);
         }
+    };
+
+    const handleViewDetails = (flight) => {
+        setSelectedFlight(flight);
+        setShowModal(true);
     };
 
     const popularDestinations = [
@@ -120,20 +137,23 @@ const FlightsPage = () => {
     const renderResults = () => {
         if (isLoading) {
             return (
-                <div className="bg-white rounded-lg p-8 text-center">
-                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-                    <p className="text-gray-600">Recherche en cours... Veuillez patienter.</p>
+                <div className="bg-white rounded-lg p-12 text-center shadow-lg">
+                    <Loader2 className="w-16 h-16 text-blue-600 animate-spin mx-auto mb-4" />
+                    <p className="text-lg text-gray-700 font-medium">Recherche des meilleurs vols...</p>
+                    <p className="text-sm text-gray-500 mt-2">Veuillez patienter</p>
                 </div>
             );
         }
 
         if (error) {
             return (
-                <div className="bg-red-50 border border-red-200 rounded-lg p-6">
-                    <p className="text-red-800">❌ {error}</p>
+                <div className="bg-red-50 border-2 border-red-200 rounded-xl p-8 text-center">
+                    <div className="text-5xl mb-4">❌</div>
+                    <p className="text-red-800 font-semibold text-lg mb-4">{error}</p>
+                    <p className="text-red-600 text-sm mb-6">Une erreur s'est produite lors de la recherche</p>
                     <button
-                        onClick={() => handleSearch(searchDataFromForm)} // Vous devrez stocker searchData si vous voulez réessayer
-                        className="mt-4 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+                        onClick={() => window.location.reload()}
+                        className="px-6 py-3 bg-red-600 text-white rounded-lg font-medium hover:bg-red-700 transition"
                     >
                         Réessayer
                     </button>
@@ -142,27 +162,38 @@ const FlightsPage = () => {
         }
 
         if (searchResults) {
-            // 💡 ICI : vous pouvez personnaliser l'affichage des résultats
-            // Pour l'exemple, on affiche juste la session ID et le nombre d'itinéraires
             const airSearchResult = searchResults.AirSearchResponse?.AirSearchResult;
-            const itineraries = airSearchResult?.FareItineraries || [];
-            const count = itineraries.length;
+            const fareItineraries = airSearchResult?.FareItineraries || [];
+
+            if (fareItineraries.length === 0) {
+                return (
+                    <div className="bg-yellow-50 border-2 border-yellow-200 rounded-xl p-8 text-center">
+                        <div className="text-5xl mb-4">✈️</div>
+                        <p className="text-yellow-800 font-semibold text-lg mb-2">Aucun vol trouvé</p>
+                        <p className="text-yellow-600 text-sm">Essayez de modifier vos critères de recherche</p>
+                    </div>
+                );
+            }
 
             return (
-                <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-8">
-                    <h2 className="text-xl font-bold text-gray-900 mb-4">
-                        Résultats de la recherche ({count} itinéraires trouvés)
-                    </h2>
-                    <p className="text-gray-600 mb-2">
-                        <strong>Session ID:</strong> {searchResults.AirSearchResponse?.session_id}
-                    </p>
-                    <p className="text-gray-600 mb-4">
-                        <strong>Fournisseur:</strong> {searchResults.AirSearchResponse?.supplier}
-                    </p>
+                <div className="space-y-6">
+                    <div className="flex items-center justify-between bg-white rounded-lg p-4 shadow-sm border border-gray-200">
+                        <h2 className="text-2xl font-bold text-gray-900">
+                            {fareItineraries.length} vol{fareItineraries.length > 1 ? 's' : ''} trouvé{fareItineraries.length > 1 ? 's' : ''}
+                        </h2>
+                        <div className="text-sm text-gray-600">
+                            Session: {searchResults.AirSearchResponse?.session_id?.slice(0, 12)}...
+                        </div>
+                    </div>
 
-                    {/* TODO: Remplacer par un composant FlightResults */}
-                    <div className="bg-gray-50 p-4 rounded max-h-96 overflow-y-auto">
-                        <pre className="text-xs overflow-x-auto">{JSON.stringify(searchResults, null, 2)}</pre>
+                    <div className="space-y-4">
+                        {fareItineraries.map((fareItinerary, index) => (
+                            <FlightResultCard
+                                key={index}
+                                flight={fareItinerary}
+                                onViewDetails={handleViewDetails}
+                            />
+                        ))}
                     </div>
                 </div>
             );
@@ -360,6 +391,13 @@ const FlightsPage = () => {
                 </div>
             </div>
             <Footer />
+
+            {/* Modal de détails du vol */}
+            <FlightDetailsModal
+                flight={selectedFlight}
+                isOpen={showModal}
+                onClose={() => setShowModal(false)}
+            />
         </div>
     );
 };

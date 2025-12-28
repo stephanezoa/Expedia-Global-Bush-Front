@@ -78,7 +78,7 @@ export default function FlightSearch({ onSearch }) {
 
   return (
     <form onSubmit={handleSearch} className="w-full">
-      <div className="space-y-4">
+      <div className="space-y-4 t">
         {/* TOP ROW: Options - Version responsive */}
         <div className="flex flex-wrap gap-2">
           {/* Icône flèche au milieu */}
@@ -165,7 +165,7 @@ export default function FlightSearch({ onSearch }) {
               <div className="absolute right-0 md:left-0 mt-1 w-72 bg-white border border-gray-200 rounded-lg shadow-lg z-50 p-4">
                 <div className="space-y-4">
                   <h4 className="font-medium text-gray-700">Passagers</h4>
-                  
+
                   <div className="flex items-center justify-between">
                     <div>
                       <div className="flex items-center gap-2">
@@ -177,7 +177,7 @@ export default function FlightSearch({ onSearch }) {
                     <div className="flex items-center gap-3">
                       <button
                         type="button"
-                        onClick={() => setAdults(a => clamp(a-1, 1, 9))}
+                        onClick={() => setAdults(a => clamp(a - 1, 1, 9))}
                         className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100"
                       >
                         <span className="text-gray-600">−</span>
@@ -185,7 +185,7 @@ export default function FlightSearch({ onSearch }) {
                       <span className="w-8 text-center font-medium">{adults}</span>
                       <button
                         type="button"
-                        onClick={() => setAdults(a => clamp(a+1, 1, 9))}
+                        onClick={() => setAdults(a => clamp(a + 1, 1, 9))}
                         className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100"
                       >
                         <span className="text-gray-600">+</span>
@@ -204,7 +204,7 @@ export default function FlightSearch({ onSearch }) {
                     <div className="flex items-center gap-3">
                       <button
                         type="button"
-                        onClick={() => setChildren(c => clamp(c-1, 0, 9))}
+                        onClick={() => setChildren(c => clamp(c - 1, 0, 9))}
                         className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100"
                       >
                         <span className="text-gray-600">−</span>
@@ -212,7 +212,7 @@ export default function FlightSearch({ onSearch }) {
                       <span className="w-8 text-center font-medium">{children}</span>
                       <button
                         type="button"
-                        onClick={() => setChildren(c => clamp(c+1, 0, 9))}
+                        onClick={() => setChildren(c => clamp(c + 1, 0, 9))}
                         className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100"
                       >
                         <span className="text-gray-600">+</span>
@@ -231,7 +231,7 @@ export default function FlightSearch({ onSearch }) {
                     <div className="flex items-center gap-3">
                       <button
                         type="button"
-                        onClick={() => setInfants(i => clamp(i-1, 0, adults))}
+                        onClick={() => setInfants(i => clamp(i - 1, 0, adults))}
                         className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100"
                       >
                         <span className="text-gray-600">−</span>
@@ -239,7 +239,7 @@ export default function FlightSearch({ onSearch }) {
                       <span className="w-8 text-center font-medium">{infants}</span>
                       <button
                         type="button"
-                        onClick={() => setInfants(i => clamp(i+1, 0, adults))}
+                        onClick={() => setInfants(i => clamp(i + 1, 0, adults))}
                         className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100"
                       >
                         <span className="text-gray-600">+</span>
@@ -279,7 +279,7 @@ export default function FlightSearch({ onSearch }) {
               <div className="absolute right-0 md:left-0 mt-1 w-72 bg-white border border-gray-200 rounded-lg shadow-lg z-50 p-4">
                 <div className="space-y-4">
                   <h4 className="font-medium text-gray-700">Bagages</h4>
-                  
+
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <Handbag className="w-4 h-4" />
@@ -288,7 +288,7 @@ export default function FlightSearch({ onSearch }) {
                     <div className="flex items-center gap-3">
                       <button
                         type="button"
-                        onClick={() => setCabin(c => clamp(c-1, 0, 5))}
+                        onClick={() => setCabin(c => clamp(c - 1, 0, 5))}
                         className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100"
                       >
                         <span className="text-gray-600">−</span>
@@ -296,7 +296,7 @@ export default function FlightSearch({ onSearch }) {
                       <span className="w-8 text-center font-medium">{cabin}</span>
                       <button
                         type="button"
-                        onClick={() => setCabin(c => clamp(c+1, 0, 5))}
+                        onClick={() => setCabin(c => clamp(c + 1, 0, 5))}
                         className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100"
                       >
                         <span className="text-gray-600">+</span>
@@ -312,7 +312,7 @@ export default function FlightSearch({ onSearch }) {
                     <div className="flex items-center gap-3">
                       <button
                         type="button"
-                        onClick={() => setChecked(c => clamp(c-1, 0, 5))}
+                        onClick={() => setChecked(c => clamp(c - 1, 0, 5))}
                         className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100"
                       >
                         <span className="text-gray-600">−</span>
@@ -320,7 +320,7 @@ export default function FlightSearch({ onSearch }) {
                       <span className="w-8 text-center font-medium">{checked}</span>
                       <button
                         type="button"
-                        onClick={() => setChecked(c => clamp(c+1, 0, 5))}
+                        onClick={() => setChecked(c => clamp(c + 1, 0, 5))}
                         className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100"
                       >
                         <span className="text-gray-600">+</span>
@@ -409,8 +409,8 @@ export default function FlightSearch({ onSearch }) {
 
           {/* Search Button */}
           <div className="lg:col-span-1 md:col-span-2">
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               className="w-full h-full py-3.5 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg font-bold hover:from-blue-700 hover:to-blue-800 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
             >
               <Search className="w-5 h-5" />
@@ -430,8 +430,8 @@ export default function FlightSearch({ onSearch }) {
               onChange={(e) => setIncludeHotel(e.target.checked)}
               className="w-4 h-4 md:w-5 md:h-5 text-blue-500 rounded focus:ring-blue-400"
             />
-            <label 
-              htmlFor="demander_recherche_hotel" 
+            <label
+              htmlFor="demander_recherche_hotel"
               className="flex items-center gap-2 cursor-pointer"
             >
               <div className="text-blue-600">
