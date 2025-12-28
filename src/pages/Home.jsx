@@ -13,6 +13,9 @@ import { Link } from "react-router-dom";
 import PopularFlights from '../components/PopularFlights';
 import PopularDestinations from '../components/PopularDestinations';
 import Marketplace from '../components/MarketPlace';
+import PopularTouristSites from '../components/PopularTouristSites';
+// ou
+import TouristSiteCards from '../pages/TouristSiteCards';
 
 import {
   Search, Plane, Hotel, Car, MapPin, Calendar, Users,
@@ -688,7 +691,7 @@ export default function HomePage() {
       </div>
     );
   };
-
+  
   // Composant Destination Card
   const DestinationCard = ({ destination }) => (
     <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all transform hover:-translate-y-1 group">
@@ -805,6 +808,8 @@ export default function HomePage() {
             </button>
           </div>
         </div>
+        <PopularTouristSites />
+
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -950,53 +955,15 @@ export default function HomePage() {
                 </button>
               </div>
 
-              {/* Destinations par style de voyage */}
-              <div className="bg-white rounded-xl shadow-lg p-6">
-                <h3 className="text-xl font-bold text-gray-800 mb-4">{t.travelStyles.title}</h3>
-                <p className="text-gray-600 mb-4">{t.travelStyles.description}</p>
-                
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {t.travelStyles.categories.map((type) => (
-                    <button
-                      key={type}
-                      className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition duration-300"
-                    >
-                      {type}
-                    </button>
-                  ))}
-                </div>
-                
-                <div className="space-y-4">
-                  {destinations.map((destination, index) => (
-                    <div key={index} className="border border-gray-200 rounded-xl overflow-hidden hover:shadow-md transition duration-300">
-                      <div className="h-32 bg-gray-300">
-                        <img 
-                          src={destination.image} 
-                          alt={destination.name}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <div className="p-4">
-                        <div className="flex justify-between items-center">
-                          <div>
-                            <h4 className="font-bold">{destination.name}</h4>
-                            <p className="text-gray-600 text-sm">{destination.location}</p>
-                          </div>
-                          <div className="text-right">
-                            <div className="text-lg font-bold text-gray-800">{destination.price}</div>
-                            <div className="text-gray-500 text-sm">/night</div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
+            
             </div>
           </div>
  <section>
             <PopularFlights />
           </section>
+
+        <TouristSiteCards />
+
 
          
 
@@ -1066,5 +1033,4 @@ export default function HomePage() {
 
       <Footer />
     </div>
-  );
-}
+);}
