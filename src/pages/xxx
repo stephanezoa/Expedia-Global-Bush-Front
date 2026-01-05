@@ -713,7 +713,61 @@ const DestinationDetail = () => {
                       {/* Forfaits */}
                       <div className="bg-white rounded-2xl p-8 shadow-sm">
                       <h2 className="text-2xl font-bold text-gray-900 mb-6">{t.sections.packages}</h2>
-                     
+                      <div className="space-y-6">
+                          {dest.packages.map((pkg, index) => (
+                          <div 
+                              key={index}
+                              onClick={() => setSelectedPackage(index)}
+                              className={`p-6 rounded-xl border-2 cursor-pointer transition ${selectedPackage === index ? 'border-blue-500 bg-blue-50' : 'border-gray-200 hover:border-blue-300'}`}
+                          >
+                              <div className="flex justify-between items-start mb-4">
+                              <div>
+                                  <h3 className="font-bold text-xl text-gray-900">{pkg.name}</h3>
+                                  <p className="text-gray-600 text-sm mt-1">{pkg.duration}</p>
+                              </div>
+                              <div className="text-right">
+                                  <div className="text-2xl font-bold text-blue-600">{pkg.price}</div>
+                                  <div className="text-sm text-gray-500">/personne</div>
+                              </div>
+                              </div>
+                              
+                              {pkg.popular && (
+                              <div className="mb-4">
+                                  <span className="inline-block px-3 py-1 bg-yellow-100 text-yellow-800 text-xs font-bold rounded-full">
+                                  {t.labels.popular}
+                                  </span>
+                              </div>
+                              )}
+                              
+                              <div className="mb-6">
+                              <h4 className="font-semibold text-gray-900 mb-2">{t.labels.includes}</h4>
+                              <div className="space-y-2">
+                                  {pkg.includes.map((item, idx) => (
+                                  <div key={idx} className="flex items-center text-gray-700">
+                                      <CheckCircle2 className="w-4 h-4 text-green-500 mr-2" />
+                                      <span className="text-sm">{item}</span>
+                                  </div>
+                                  ))}
+                              </div>
+                              </div>
+                              
+                              <div className="mb-6">
+                              <h4 className="font-semibold text-gray-900 mb-2">{t.labels.features}</h4>
+                              <div className="flex flex-wrap gap-2">
+                                  {pkg.features.map((feature, idx) => (
+                                  <span key={idx} className="px-3 py-1 bg-gray-100 text-gray-700 text-xs rounded-full">
+                                      {feature}
+                                  </span>
+                                  ))}
+                              </div>
+                              </div>
+                              
+                              <button className="w-full py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-blue-800 transition">
+                              {t.buttons.bookNow}
+                              </button>
+                          </div>
+                          ))}
+                      </div>
                       </div>
       
                       {/* Informations pratiques */}

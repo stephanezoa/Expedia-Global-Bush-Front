@@ -29,6 +29,8 @@ import Contact from "../pages/Contact";
 import About from "../pages/About";
 import Cookies from "../pages/Cookies";
 import DestinationPays from "../pages/DestinationPays";
+import DestinationsCameroun from "../pages/DestinationsCameroun";
+
 
 
 // Import du Layout avec Header intégré
@@ -45,8 +47,8 @@ const router = createBrowserRouter([
       { index: true, element: <Home /> },
       { path: "login", element: <Login /> },
       { path: "register", element: <Register /> },
-      { path: "vols", element: <FlightsPage /> },
       { path: "hotels", element: <HotelsPage /> },
+      { path: "vols", element: <FlightsPage /> },
       { path: "vols/:id", element: <FlightsDetailPage /> },
       { path: "hotels/:id", element: <HotelsDetailPage /> },
       { path: "hotels/:id/gallery", element: <HotelGalleryPage /> },
@@ -55,6 +57,7 @@ const router = createBrowserRouter([
       { path: "journeys/:id", element: <JourneyDetailPage /> },
       { path: "journeys/:id/gallery", element: <JourneyGalleryPage /> },
       { path: "destination", element: <Destinations /> },
+      { path: "destination-cameroun", element: <DestinationsCameroun /> },
       { path: "destination-pays", element: <DestinationPays /> },
       { path: "destination/:id", element: <DestinationDetail /> },
       { path: "destination/:id/gallery", element: <DestinationGallery /> },
