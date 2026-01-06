@@ -131,7 +131,7 @@ export default function Hero() {
                 />
                 {/* Blue glass overlay */}
     <div className="absolute inset-0 bg-blue-600/10 backdrop-blur-sm"></div>
-    {/* Gradient supplémentaire */}
+    {/* Gradient supplémentaires */}
     <div className="absolute inset-0 bg-gradient-to-tr from-blue-700/10 via-transparent to-purple-600/20"></div>
             </div>
 
