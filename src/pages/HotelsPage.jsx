@@ -3,6 +3,7 @@ import { Search, Calendar, Users, MapPin, Filter, Star, ChevronRight, X, Check, 
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import Pays1 from "../assets/pays1.jpg"
 import { useNavigate } from 'react-router-dom'; 
 
 
@@ -188,71 +189,124 @@ const HotelsPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header />
-      
-      {/* Search Bar */}
-      <div className="bg-white border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
-          <div className="bg-white rounded-xl border border-gray-300 p-4 shadow-sm">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-              {/* Destination */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Destination</label>
-                <div className="relative">
-                  <input
-                    type="text"
-                    value={searchParams.destination}
-                    onChange={(e) => setSearchParams({...searchParams, destination: e.target.value})}
-                    className="w-full p-3 pl-10 border border-gray-300 rounded-lg"
-                    placeholder="Where do you want to stay?"
-                  />
-                  <MapPin className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
-                </div>
+        <div 
+          className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-8 relative min-h-[400px]"
+          style={{
+              backgroundImage: `url(${Pays1})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundBlendMode: 'overlay'
+          }}>
+          {/* Overlay pour améliorer la lisibilité */}
+          <div className="absolute inset-0 bg-blue-500/50 z-0"></div>
+          
+          {/* Contenu principal positionné au-dessus de l'overlay */}
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
+              {/* Titre et description */}
+              <div className="mb-8">
+                  <h1 className="text-3xl font-bold mb-2">Find Your Perfect Stay</h1>
+                  <p className="text-blue-100 text-lg">Discover amazing hotels at unbeatable prices</p>
               </div>
+              
+              {/* Formulaire de recherche */}
+              <div className="bg-white rounded-xl border border-gray-300 p-6 shadow-xl">
+                  <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+                      {/* Destination */}
+                      <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                              Destination
+                          </label>
+                          <div className="relative">
+                              <input
+                                  type="text"
+                                  value={searchParams.destination}
+                                  onChange={(e) => setSearchParams({...searchParams, destination: e.target.value})}
+                                  className="w-full p-3 pl-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+                                  placeholder="Where do you want to stay?"
+                              />
+                              <MapPin className="absolute left-3 top-3.5 w-5 h-5 text-gray-400" />
+                          </div>
+                      </div>
 
-              {/* Dates */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Check-in / Check-out</label>
-                <div className="relative">
-                  <input
-                    type="text"
-                    value={`${searchParams.checkIn} - ${searchParams.checkOut}`}
-                    className="w-full p-3 pl-10 border border-gray-300 rounded-lg"
-                    readOnly
-                  />
-                  <Calendar className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
-                </div>
-              </div>
+                      {/* Dates */}
+                      <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                              Check-in / Check-out
+                          </label>
+                          <div className="relative">
+                              <input
+                                  type="text"
+                                  value={`${searchParams.checkIn} - ${searchParams.checkOut}`}
+                                  className="w-full p-3 pl-10 border border-gray-300 rounded-lg bg-white cursor-pointer"
+                                  readOnly
+                                  onClick={() => {/* Ouvrir le calendrier */}}
+                              />
+                              <Calendar className="absolute left-3 top-3.5 w-5 h-5 text-gray-400" />
+                          </div>
+                      </div>
 
-              {/* Travelers */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Travelers</label>
-                <div className="relative">
-                  <input
-                    type="text"
-                    value={searchParams.travelers}
-                    className="w-full p-3 pl-10 border border-gray-300 rounded-lg"
-                    readOnly
-                  />
-                  <Users className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
-                </div>
-              </div>
+                      {/* Travelers */}
+                      <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                              Travelers
+                          </label>
+                          <div className="relative">
+                              <input
+                                  type="text"
+                                  value={searchParams.travelers}
+                                  className="w-full p-3 pl-10 border border-gray-300 rounded-lg bg-white cursor-pointer"
+                                  readOnly
+                                  onClick={() => {/* Ouvrir le sélecteur de voyageurs */}}
+                              />
+                              <Users className="absolute left-3 top-3.5 w-5 h-5 text-gray-400" />
+                          </div>
+                      </div>
 
-              {/* Search Button */}
-              <div className="flex items-end">
-                <button
-                  onClick={handleSearch}
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 flex items-center justify-center gap-2"
-                >
-                  <Search className="w-5 h-5" />
-                  Search
-                </button>
+                      {/* Search Button */}
+                      <div className="flex items-end">
+                          <button
+                              onClick={handleSearch}
+                              className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-3.5 px-6 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+                          >
+                              <Search className="w-5 h-5" />
+                              Search Hotels
+                          </button>
+                      </div>
+                  </div>
+                  
+                  {/* Options supplémentaires (optionnel) */}
+                  <div className="mt-6 flex items-center justify-between">
+                      <div className="flex items-center space-x-6">
+                          <div className="flex items-center">
+                              <input 
+                                  type="checkbox" 
+                                  id="flexibleDates" 
+                                  className="w-4 h-4 text-blue-600 rounded focus:ring-blue-500" 
+                              />
+                              <label htmlFor="flexibleDates" className="ml-2 text-sm text-gray-700">
+                                  Flexible dates
+                              </label>
+                          </div>
+                          <div className="flex items-center">
+                              <input 
+                                  type="checkbox" 
+                                  id="directOnly" 
+                                  className="w-4 h-4 text-blue-600 rounded focus:ring-blue-500" 
+                              />
+                              <label htmlFor="directOnly" className="ml-2 text-sm text-gray-700">
+                                  Direct deals only
+                              </label>
+                          </div>
+                      </div>
+                      
+                      <button className="text-sm text-blue-600 hover:text-blue-800 font-medium">
+                          Advanced filters →
+                      </button>
+                  </div>
               </div>
-            </div>
           </div>
-        </div>
       </div>
-
+   
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6">
         <div className="flex flex-col lg:flex-row gap-6">
           {/* Filters Sidebar */}

@@ -5,6 +5,8 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { useNavigate } from 'react-router-dom'; 
 
+import Pays1 from "../assets/pays1.jpg"
+
 
 const CarPage = () => {
   const navigate = useNavigate();
@@ -226,10 +228,28 @@ const CarPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header />
-      
-      {/* Search Bar */}
-      <div className="bg-white border-b">
+    
+
+        <div 
+                className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-8 relative min-h-[400px]"
+                style={{
+                    backgroundImage: `url(${Pays1})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundBlendMode: 'overlay'
+                }}>
+                {/* Overlay pour améliorer la lisibilité */}
+                <div className="absolute inset-0 bg-red-500/30 z-0"></div>
+                
+                {/* Contenu principal positionné au-dessus de l'overlay */}
+                <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
+                    {/* Titre et description */}
+                    <div className="mb-8">
+                        <h1 className="text-3xl font-bold mb-2">Find Your Perfect Car</h1>
+                        <p className="text-blue-100 text-lg">Discover amazing cars at unbeatable prices</p>
+                    </div>
+                   {/* Search Bar */}
+      <div className="   border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6">
           <div className="bg-white rounded-xl border border-gray-300 p-6 shadow-sm">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
@@ -315,6 +335,8 @@ const CarPage = () => {
           </div>
         </div>
       </div>
+                </div>
+            </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6">
         <div className="flex flex-col lg:flex-row gap-6">

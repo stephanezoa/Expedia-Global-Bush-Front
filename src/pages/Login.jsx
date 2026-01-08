@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext"; // Import du contexte
+import { useAuth } from "../context/AuthContext"; // Import du contexte
 // IMPORTS DES IMAGES (obligatoire avec Vite)
 import loginImg from "../assets/login.jpg";
 import logoApp from "../assets/logoApp.jpg";

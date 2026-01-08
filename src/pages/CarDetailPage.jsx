@@ -155,7 +155,6 @@ const CarDetailPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header />
       
       {/* Navigation Breadcrumb */}
       <div className="bg-white border-b">
