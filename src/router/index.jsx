@@ -33,6 +33,12 @@ import DestinationsCameroun from "../pages/DestinationsCameroun";
 
 
 
+import Careers from "../pages/Careers";
+import Privacy from "../pages/Privacy";
+import Terms from "../pages/Terms";
+import Aboutus from "../pages/Aboutus";
+import Mission from "../pages/Mission";
+
 // Import du Layout avec Header intégré
 import Layout from "../pages/Layout";
 import Newsrooms from "../pages/Newsrooms";
@@ -74,6 +80,13 @@ const router = createBrowserRouter([
       { path: "contact", element: <Contact /> },
       { path: "about", element: <About /> },
       { path: "/legal/cookies", element: <Cookies /> },
+
+      { path: "careers", element: <Careers /> },
+      { path: "privacy", element: <Privacy /> },
+      { path: "terms", element: <Terms /> },
+      { path: "aboutus", element: <Aboutus /> },
+      { path: "mission", element: <Mission /> },
+      
 
 
     ]
