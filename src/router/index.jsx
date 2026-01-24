@@ -38,6 +38,33 @@ import Privacy from "../pages/Privacy";
 import Terms from "../pages/Terms";
 import Aboutus from "../pages/Aboutus";
 import Mission from "../pages/Mission";
+import Places from "../pages/Places";
+import Market from "../pages/Market";
+
+import Visa from "../pages/Visa";
+import Transferts from "../pages/Transferts";
+import Esim from "../pages/Esim";
+import Insurance from "../pages/Insurance";
+import Cancelation from "../pages/Cancelation";
+import Holiday from "../pages/Holiday";
+import Contactus from "../pages/Contactus";
+import Nossolutions from "../pages/Nossolutions";
+
+
+import Voyagesaffaires from "../pages/Voyagesaffaires";
+import Gestionvoyages from "../pages/Gestionvoyages";
+import Voyagesmaritime from "../pages/Voyagesmaritime";
+import Ecotourisme from "../pages/Ecotourisme";
+import Visitefamille from "../pages/Visitefamille";
+import Circuitscycliste from "../pages/Circuitscycliste";
+import Circuitgolf from "../pages/Circuitgolf";
+import Voyagenoces from "../pages/Voyagenoces";
+import Hebergementhotelier from "../pages/Hebergementhotelier";
+import Gestionreunions from "../pages/Gestionreunions";
+import Locationvoiture from "../pages/Locationvoiture";
+import Transfertaeoport from "../pages/Transfertaeoport";
+import Rencontreaccueil from "../pages/Rencontreaccueil";
+import Voyageloisir from "../pages/Voyageloisir";
 
 // Import du Layout avec Header intégré
 import Layout from "../pages/Layout";
@@ -86,7 +113,35 @@ const router = createBrowserRouter([
       { path: "terms", element: <Terms /> },
       { path: "aboutus", element: <Aboutus /> },
       { path: "mission", element: <Mission /> },
-      
+      { path: "visa", element: <Visa /> },
+      { path: "places", element: <Places /> },
+      { path: "market", element: <Market /> },
+      { path: "transferts", element: <Transferts /> },
+      { path: "esim", element: <Esim /> },
+      { path: "insurance", element: <Insurance /> },
+      { path: "cancelation", element: <Cancelation /> },
+      { path: "holiday", element: <Holiday /> },
+      { path: "contactus", element: <Contactus /> },
+      { path: "Nossolutions", element: <Nossolutions /> },
+
+      { path: "voyagesaffaires", element: <Voyagesaffaires /> },
+      { path: "gestionvoyages", element: <Gestionvoyages /> },
+      { path: "voyagesmaritime", element: <Voyagesmaritime /> },
+      { path: "ecotourisme", element: <Ecotourisme /> },
+      { path: "visitefamille", element: <Visitefamille /> },
+      { path: "circuitscycliste", element: <Circuitscycliste /> },
+      { path: "circuitgolf", element: <Circuitgolf /> },
+      { path: "voyagenoces", element: <Voyagenoces /> },
+      { path: "hebergementhotelier", element: <Hebergementhotelier /> },
+      { path: "gestionreunions", element: <Gestionreunions /> },
+      { path: "locationvoiture", element: <Locationvoiture /> },
+      { path: "transfertaeoport", element: <Transfertaeoport /> },
+      { path: "rencontreaccueil", element: <Rencontreaccueil /> },
+      { path: "voyageloisir", element: <Voyageloisir /> },
+
+
+       
+
 
 
     ]
