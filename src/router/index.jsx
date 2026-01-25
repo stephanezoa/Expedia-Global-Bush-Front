@@ -66,6 +66,16 @@ import Transfertaeoport from "../pages/Transfertaeoport";
 import Rencontreaccueil from "../pages/Rencontreaccueil";
 import Voyageloisir from "../pages/Voyageloisir";
 
+
+
+import Preparersonvoyage from "../pages/Preparersonvoyage";
+import Raisons12 from "../pages/Raisons12";
+import Chauffeursguides from "../pages/Chauffeursguides";
+import Guidevoyage from "../pages/Guidevoyage";
+import Dosdont from "../pages/Dosdont";
+import FAQ from "../pages/FAQ";
+import Developpementdurable from "../pages/Developpementdurable";
+
 // Import du Layout avec Header intégré
 import Layout from "../pages/Layout";
 import Newsrooms from "../pages/Newsrooms";
@@ -138,6 +148,15 @@ const router = createBrowserRouter([
       { path: "transfertaeoport", element: <Transfertaeoport /> },
       { path: "rencontreaccueil", element: <Rencontreaccueil /> },
       { path: "voyageloisir", element: <Voyageloisir /> },
+
+
+      { path: "preparersonvoyage", element: <Preparersonvoyage /> },
+      { path: "raisons12", element: <Raisons12 /> },
+      { path: "chauffeursguides", element: <Chauffeursguides /> },
+      { path: "guidevoyage", element: <Guidevoyage /> },
+      { path: "dosdont", element: <Dosdont /> },
+      { path: "faq", element: <FAQ /> },
+      { path: "developpementdurable", element: <Developpementdurable /> },
 
 
        
