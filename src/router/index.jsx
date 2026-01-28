@@ -80,6 +80,15 @@ import Developpementdurable from "../pages/Developpementdurable";
 import Layout from "../pages/Layout";
 import Newsrooms from "../pages/Newsrooms";
 import ContentGuidelines from "../pages/ContentGuidelines";
+import Camerounagencevoyage from "../pages/Camerounagencevoyage";
+
+
+
+import Guidevoyages from "../pages/Guidevoyages";
+import Aproposcameroun from "../pages/Aproposcameroun";
+import Infocameroun from "../pages/Infocameroun";
+import Guidevoyagecameroun from "../pages/Guidevoyagecameroun";
+import Affairecameroun from "../pages/Affairecameroun";
 
 // Création du router avec Layout
 const router = createBrowserRouter([
@@ -157,11 +166,18 @@ const router = createBrowserRouter([
       { path: "dosdont", element: <Dosdont /> },
       { path: "faq", element: <FAQ /> },
       { path: "developpementdurable", element: <Developpementdurable /> },
+      { path: "developpementdurable", element: <Developpementdurable /> },
 
 
-       
 
 
+      { path: "guidevoyages", element: <Guidevoyages /> },
+      { path: "aproposcameroun", element: <Aproposcameroun /> },
+     
+      { path: "camerounagencevoyage", element: <Camerounagencevoyage /> },
+      { path: "infocameroun", element: <Infocameroun /> },
+      { path: "guidevoyagecameroun", element: <Guidevoyagecameroun /> },
+      { path: "affairecameroun", element: <Affairecameroun /> },
 
     ]
   }
