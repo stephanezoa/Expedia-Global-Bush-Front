@@ -90,6 +90,23 @@ import Infocameroun from "../pages/Infocameroun";
 import Guidevoyagecameroun from "../pages/Guidevoyagecameroun";
 import Affairecameroun from "../pages/Affairecameroun";
 
+
+
+
+import Forfaittouristiques from "../pages/Forfaittourisques";
+import Decouverteculturelle from "../pages/Decouverteculturelle";
+import Visiteplages from "../pages/Visiteplages";
+import Ecotourisme2 from "../pages/Ecotourisme2";
+import Voyageetude from "../pages/Voyageetude";
+import Safarifaune from "../pages/Safarifaune";
+import Plongetours from "../pages/Plongetours";
+import Gorilletours from "../pages/Gorilletours";
+import Ornithologietours from "../pages/Ornithologietours";
+
+
+
+import Clone from "../pages/Clone";
+
 // Création du router avec Layout
 const router = createBrowserRouter([
   {
@@ -179,6 +196,21 @@ const router = createBrowserRouter([
       { path: "guidevoyagecameroun", element: <Guidevoyagecameroun /> },
       { path: "affairecameroun", element: <Affairecameroun /> },
 
+
+
+      { path: "forfaittouristiques", element: <Forfaittouristiques /> },
+      { path: "decouverteculturelle", element: <Decouverteculturelle /> },
+      { path: "visiteplages", element: <Visiteplages /> },
+      { path: "ecotourisme2", element: <Ecotourisme2 /> },
+      { path: "voyageetude", element: <Voyageetude /> },
+      { path: "safarifaune", element: <Safarifaune /> },
+      { path: "plongetours", element: <Plongetours /> },
+      { path: "gorilletours", element: <Gorilletours /> },
+      { path: "ornithologietours", element: <Ornithologietours /> },
+
+
+
+      { path: "clone", element: <Clone /> },
     ]
   }
 ]);
