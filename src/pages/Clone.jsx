@@ -29,7 +29,7 @@ export default function Clone() {
       salePrice: 1569,
       dates: 'FÉV-AVR',
       image: 'https://images.unsplash.com/photo-1572252009286-268acec5ca0a?w=800&auto=format&fit=crop',
-      link: '/circuits/evasion-le-caire-alexandrie'
+      link: '/evasionlecairealexandrie'
     },
     {
       id: 'KQIX',
@@ -42,7 +42,7 @@ export default function Clone() {
       price: 1699,
       dates: 'SEP-DÉC',
       image: 'https://images.unsplash.com/photo-1572252009286-268acec5ca0a?w=800&auto=format&fit=crop',
-      link: '/circuits/evasion-automne'
+      link: '/evasionlecairealexandrie'
     },
     {
       id: 'QG',
@@ -56,7 +56,7 @@ export default function Clone() {
       includesAir: true,
       dates: '',
       image: 'https://images.unsplash.com/photo-1568322445389-f64ac2515020?w=800&auto=format&fit=crop',
-      link: '/circuits/croisiere-nil-classique'
+      link: '/croisierenilclassique'
     },
     {
       id: 'KQL',
@@ -70,7 +70,7 @@ export default function Clone() {
       includesAir: true,
       dates: 'FÉV-AVR',
       image: 'https://images.unsplash.com/photo-1553913861-c0fddf2619ee?w=800&auto=format&fit=crop',
-      link: '/circuits/croisiere-3-nuits'
+      link: '/croisiere-3-nuits'
     },
     {
       id: 'KQLX',
@@ -84,7 +84,7 @@ export default function Clone() {
       includesAir: true,
       dates: 'SEP-DÉC',
       image: 'https://images.unsplash.com/photo-1553913861-c0fddf2619ee?w=800&auto=format&fit=crop',
-      link: '/circuits/croisiere-automne'
+      link: '/croisiere-automne'
     },
     {
       id: 'QGE',
@@ -98,7 +98,7 @@ export default function Clone() {
       includesAir: true,
       dates: '',
       image: 'https://images.unsplash.com/photo-1591106293837-c2ea192e1857?w=800&auto=format&fit=crop',
-      link: '/circuits/egypte-jordanie-combiné'
+      link: '/egypte-jordanie-combine'
     }
   ];
 

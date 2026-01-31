@@ -106,6 +106,8 @@ import Ornithologietours from "../pages/Ornithologietours";
 
 
 import Clone from "../pages/Clone";
+import Evasionlecairealexandrie from "../pages/Evasionlecairealexandrie";
+import Croisierenilclassique from "../pages/Croisierenilclassique";
 
 // Création du router avec Layout
 const router = createBrowserRouter([
@@ -211,6 +213,10 @@ const router = createBrowserRouter([
 
 
       { path: "clone", element: <Clone /> },
+      { path: "evasionlecairealexandrie", element: <Evasionlecairealexandrie /> },
+      { path: "croisierenilclassique", element: <Croisierenilclassique /> },
+   
+      
     ]
   }
 ]);
