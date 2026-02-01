@@ -109,6 +109,20 @@ import Clone from "../pages/Clone";
 import Evasionlecairealexandrie from "../pages/Evasionlecairealexandrie";
 import Croisierenilclassique from "../pages/Croisierenilclassique";
 
+
+
+import Cameroun from "../pages/Cameroun";
+import Tresorscamerounyaoundekribi from "../pages/Tresorscamerounyaoundekribi";
+import Randonnemontagneouest from "../pages/Randonnemontagneouest";
+import Decouvertecompletecameroun from "../pages/Decouvertecompletecameroun";
+import Safariwaza from "../pages/Safariwaza";
+import Culturebamileke from "../pages/Culturebamileke";
+import Afriqueminiaturetourcomplet from "../pages/Afriqueminiaturetourcomplet";
+import Aventureforettropicale from "../pages/Aventureforettropicale";
+import Coteplagelittoral from "../pages/Coteplagelittoral";
+import Rencontrenord from "../pages/Rencontrenord";
+
+
 // Création du router avec Layout
 const router = createBrowserRouter([
   {
@@ -215,8 +229,20 @@ const router = createBrowserRouter([
       { path: "clone", element: <Clone /> },
       { path: "evasionlecairealexandrie", element: <Evasionlecairealexandrie /> },
       { path: "croisierenilclassique", element: <Croisierenilclassique /> },
-   
-      
+
+
+      { path: "cameroun", element: <Cameroun /> },
+      { path: "tresorscamerounyaoundekribi", element: <Tresorscamerounyaoundekribi /> },
+      { path: "randonnemontagneouest", element: <Randonnemontagneouest /> },
+      { path: "decouvertecompletecameroun", element: <Decouvertecompletecameroun /> },
+      { path: "safariwaza", element: <Safariwaza /> },
+      { path: "culturebamileke", element: <Culturebamileke /> },
+      { path: "afriqueminiaturetourcomplet", element: <Afriqueminiaturetourcomplet /> },
+      { path: "aventureforettropicale", element: <Aventureforettropicale /> },
+      { path: "coteplagelittoral", element: <Coteplagelittoral /> },
+      { path: "rencontrenord", element: <Rencontrenord /> },
+     
+
     ]
   }
 ]);
