@@ -123,6 +123,18 @@ import Coteplagelittoral from "../pages/Coteplagelittoral";
 import Rencontrenord from "../pages/Rencontrenord";
 
 
+import Tchad from "../pages/Tchad";
+import Decouvertesudtchadien from "../pages/Decouvertesudtchadien";
+import Royaumescentre from "../pages/Royaumescentre";
+import Expeditionsaharienne from "../pages/Expeditionsaharienne";
+import Massif from "../pages/Massif";
+import Safarizakouma from "../pages/Safarizakouma";
+import Tchadcomplet from "../pages/Tchadcomplet";
+import Decouvertelactchad from "../pages/Decouvertelactchad";
+import Patrimoinesud from "../pages/Patrimoinesud";
+import Aventuresahara from "../pages/Aventuresahara";
+
+
 // Création du router avec Layout
 const router = createBrowserRouter([
   {
@@ -241,7 +253,20 @@ const router = createBrowserRouter([
       { path: "aventureforettropicale", element: <Aventureforettropicale /> },
       { path: "coteplagelittoral", element: <Coteplagelittoral /> },
       { path: "rencontrenord", element: <Rencontrenord /> },
-     
+
+
+
+      { path: "tchad", element: <Tchad /> },
+      { path: "decouvertesudtchadien", element: <Decouvertesudtchadien /> },
+      { path: "royaumescentre", element: <Royaumescentre /> },
+      { path: "expeditionsaharienne", element: <Expeditionsaharienne /> },
+      { path: "massif", element: <Massif /> },
+      { path: "safarizakouma", element: <Safarizakouma /> },
+      { path: "tchadcomplet", element: <Tchadcomplet /> },
+      { path: "decouvertelactchad", element: <Decouvertelactchad /> },
+      { path: "patrimoinesud", element: <Patrimoinesud /> },
+      { path: "aventuresahara", element: <Aventuresahara /> }
+
 
     ]
   }
