@@ -135,6 +135,21 @@ import Patrimoinesud from "../pages/Patrimoinesud";
 import Aventuresahara from "../pages/Aventuresahara";
 
 
+
+
+
+import Guineeequatorial from "../pages/Guineeequatorial";
+import Decouvertedeuxrives from "../pages/Decouvertedeuxrives";
+import Aventurebioko from "../pages/Aventurebioko";
+import Riomuni from "../pages/Riomuni";
+import Iles from "../pages/Iles";
+import Naturesauvage from "../pages/Naturesauvage";
+import Guineeequatorialcomplete from "../pages/Guineeequatorialcomplete";
+import Cote from "../pages/Cote";
+import Luxemalabo from "../pages/Luxemalabo";
+import Affairesdecouverte from "../pages/Affairesdecouverte";
+
+
 // Création du router avec Layout
 const router = createBrowserRouter([
   {
@@ -265,7 +280,27 @@ const router = createBrowserRouter([
       { path: "tchadcomplet", element: <Tchadcomplet /> },
       { path: "decouvertelactchad", element: <Decouvertelactchad /> },
       { path: "patrimoinesud", element: <Patrimoinesud /> },
-      { path: "aventuresahara", element: <Aventuresahara /> }
+      { path: "aventuresahara", element: <Aventuresahara /> },
+
+
+
+
+
+      { path: "guineeequatorial", element: <Guineeequatorial /> },
+      { path: "decouvertedeuxrives", element: <Decouvertedeuxrives /> },
+      { path: "aventurebioko", element: <Aventurebioko /> },
+      { path: "aventurebioko", element: <Aventurebioko /> },
+      { path: "riomuni", element: <Riomuni /> },
+      { path: "iles", element: <Iles /> },
+      { path: "naturesauvage", element: <Naturesauvage /> },
+      { path: "guineeequatorialcomplete", element: <Guineeequatorialcomplete /> },
+      { path: "luxemalabo", element: <Luxemalabo /> },
+      { path: "Affairesdecouverte", element: <Affairesdecouverte /> },
+
+
+
+
+
 
 
     ]
