@@ -163,6 +163,21 @@ import Plagesecrete from "../pages/Plagesecrete";
 import Culturetradition from "../pages/Culturetradition";
 
 
+
+
+
+import Congo from "../pages/Congo";
+import Congoexpress from "../pages/Congoexpress";
+import Safaricongo from "../pages/Safaricongo";
+import Aventurecotiere from "../pages/Aventurecotiere";
+import Gorilleforet from "../pages/Gorilleforet";
+import Grandtourcongo from "../pages/Grandtourcongo";
+import Valleemontagne from "../pages/Valleemontagne";
+import Ecotourismecongo from "../pages/Ecotourismecongo"; 
+import Patrimoinecongo from "../pages/Patrimoinecongo";
+import Congonature from "../pages/Congonature";
+
+
 // Création du router avec Layout
 const router = createBrowserRouter([
   {
@@ -325,7 +340,20 @@ const router = createBrowserRouter([
 
 
 
+      { path: "congo", element: <Congo /> },
+      { path: "congoexpress", element: <Congoexpress /> },
+      { path: "safaricongo", element: <Safaricongo /> },
+      { path: "aventurecotiere", element: <Aventurecotiere /> },
+      { path: "gorilleforet", element: <Gorilleforet /> },
+      { path: "grandtourcongo", element: <Grandtourcongo /> },
+      { path: "valleemontagne", element: <Valleemontagne /> },
+      { path: "ecotourismecongo", element: <Ecotourismecongo /> },
+      { path: "patrimoinecongo", element: <Patrimoinecongo /> },
+      { path: "congonature", element: <Congonature /> },
 
+      
+
+      
 
 
 
