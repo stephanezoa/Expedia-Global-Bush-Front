@@ -150,6 +150,19 @@ import Luxemalabo from "../pages/Luxemalabo";
 import Affairesdecouverte from "../pages/Affairesdecouverte";
 
 
+
+import Saotome from "../pages/Saotome";
+import Decouvertesaotome from "../pages/Decouvertesaotome";
+import Randonneplantation from "../pages/Randonneplantation";
+import Plageparadis from "../pages/Plageparadis";
+import Aventuregrande from "../pages/Aventuregrande";
+import Circuitdeuxiles from "../pages/Circuitdeuxiles";
+import Naturebiodiversite from "../pages/Naturebiodiversite";
+import Cacao from "../pages/Cacao";
+import Plagesecrete from "../pages/Plagesecrete";
+import Culturetradition from "../pages/Culturetradition";
+
+
 // Création du router avec Layout
 const router = createBrowserRouter([
   {
@@ -296,6 +309,19 @@ const router = createBrowserRouter([
       { path: "guineeequatorialcomplete", element: <Guineeequatorialcomplete /> },
       { path: "luxemalabo", element: <Luxemalabo /> },
       { path: "Affairesdecouverte", element: <Affairesdecouverte /> },
+
+
+
+      { path: "saotome", element: <Saotome /> },
+      { path: "decouvertesaotome", element: <Decouvertesaotome /> },
+      { path: "randonneplantation", element: <Randonneplantation /> },
+      { path: "plageparadis", element: <Plageparadis /> },
+      { path: "aventuregrande", element: <Aventuregrande /> },
+      { path: "circuitdeuxiles", element: <Circuitdeuxiles /> },
+      { path: "naturebiodiversite", element: <Naturebiodiversite /> },
+      { path: "cacao", element: <Cacao /> },
+      { path: "plagesecrete", element: <Plagesecrete /> },
+      { path: "culturetradition", element: <Culturetradition /> },
 
 
 
