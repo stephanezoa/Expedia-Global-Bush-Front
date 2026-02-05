@@ -190,6 +190,18 @@ import Immersionforet from "../pages/Immersionforet";
 import Routecentre from "../pages/Routecentre";
 
 
+import Angola from "../pages/Angola";
+import Tresorangola from "../pages/Tresorangola";
+import Plateaucentre from "../pages/Plateaucentre";
+import Nordangola from "../pages/Nordangola";
+import Desertnamibe from "../pages/Desertnamibe";
+import Enclave from "../pages/Enclave";
+import Sudangola from "../pages/Sudangola"; 
+import Coteangola from "../pages/Coteangola";
+import Valleefertile from "../pages/Valleefertile";
+import Safariiona from "../pages/Safariiona"; 
+
+
 // Création du router avec Layout
 const router = createBrowserRouter([
   {
@@ -379,7 +391,20 @@ const router = createBrowserRouter([
       { path: "routecentre", element: <Routecentre /> },
 
 
-      
+
+
+
+      { path: "angola", element: <Angola /> },
+      { path: "tresorangola", element: <Tresorangola /> },
+      { path: "plateaucentre", element: <Plateaucentre /> },
+      { path: "nordangola", element: <Nordangola /> },
+      { path: "desertnamibe", element: <Desertnamibe /> },
+      { path: "enclave", element: <Enclave /> },
+      { path: "sudangola", element: <Sudangola /> },
+      { path: "coteangola", element: <Coteangola /> },
+      { path: "valleefertile", element: <Valleefertile /> },
+      { path: "safariiona", element: <Safariiona /> },
+
 
       
 
