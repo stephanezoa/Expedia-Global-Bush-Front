@@ -202,6 +202,19 @@ import Valleefertile from "../pages/Valleefertile";
 import Safariiona from "../pages/Safariiona"; 
 
 
+
+import Rdcongo from "../pages/Rdcongo"; 
+import Tresorbascongo from "../pages/Tresorbascongo"; 
+import Expeditioncoeur from "../pages/Expeditioncoeur";
+import Gorillevolcan from "../pages/Gorillevolcan";
+import Foretequatorialcongo from "../pages/Foretequatorialcongo";
+import Minesavane from "../pages/Minesavane";
+import Rdccomplet from "../pages/Rdccomplet";
+import Rivemontagne from "../pages/Rivemontagne";
+import Culturetraditions from "../pages/Culturetraditions";
+import Villehistorique from "../pages/Villehistorique";
+
+
 // Création du router avec Layout
 const router = createBrowserRouter([
   {
@@ -404,6 +417,22 @@ const router = createBrowserRouter([
       { path: "coteangola", element: <Coteangola /> },
       { path: "valleefertile", element: <Valleefertile /> },
       { path: "safariiona", element: <Safariiona /> },
+
+
+
+
+      { path: "rdcongo", element: <Rdcongo /> },
+      { path: "tresorbascongo", element: <Tresorbascongo /> },
+      { path: "expeditioncoeur", element: <Expeditioncoeur /> },
+      { path: "gorillevolcan", element: <Gorillevolcan /> },
+      { path: "foretequatorialcongo", element: <Foretequatorialcongo /> },
+      { path: "minesavane", element: <Minesavane /> },
+      { path: "rdccomplet", element: <Rdccomplet /> },
+      { path: "rivemontagne", element: <Rivemontagne /> },
+      { path: "culturetraditions", element: <Culturetraditions /> },
+      { path: "villehistorique", element: <Villehistorique /> },
+
+
 
 
       
