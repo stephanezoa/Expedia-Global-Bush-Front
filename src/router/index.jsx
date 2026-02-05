@@ -178,6 +178,18 @@ import Patrimoinecongo from "../pages/Patrimoinecongo";
 import Congonature from "../pages/Congonature";
 
 
+import Republique from "../pages/Republique";
+import Coeurcentre from "../pages/Coeurcentre";
+import Megoli from "../pages/Megoli";
+import Expedition from "../pages/Expedition";
+import Safarizanga from "../pages/Safarizanga";
+import Aventuresahel from "../pages/Aventuresahel";
+import Tourouest from "../pages/Tourouest";
+import Chutes from "../pages/Chutes";
+import Immersionforet from "../pages/Immersionforet";
+import Routecentre from "../pages/Routecentre";
+
+
 // Création du router avec Layout
 const router = createBrowserRouter([
   {
@@ -350,6 +362,22 @@ const router = createBrowserRouter([
       { path: "ecotourismecongo", element: <Ecotourismecongo /> },
       { path: "patrimoinecongo", element: <Patrimoinecongo /> },
       { path: "congonature", element: <Congonature /> },
+
+
+
+
+
+      { path: "republique", element: <Republique /> },
+      { path: "coeurcentre", element: <Coeurcentre /> },
+      { path: "megoli", element: <Megoli /> },
+      { path: "expedition", element: <Expedition /> },
+      { path: "safarizanga", element: <Safarizanga /> },
+      { path: "aventuresahel", element: <Aventuresahel /> },
+      { path: "tourouest", element: <Tourouest /> },
+      { path: "chutes", element: <Chutes /> },
+      { path: "immersionforet", element: <Immersionforet /> },
+      { path: "routecentre", element: <Routecentre /> },
+
 
       
 
